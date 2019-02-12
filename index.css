@@ -299,7 +299,7 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
                 border-radius: 10px;
 
               	display: grid;
-              	grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+              	grid-template: repeat(5, 1fr) / repeat(5, 1fr);
               }
 
     .box
