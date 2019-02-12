@@ -1,4 +1,3 @@
-
 /************************************ FONTS ************************************/
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
 @import url(http://weloveiconfonts.com/api/?family=entypo|fontawesome|zocial);
@@ -106,7 +105,7 @@ h1, h2, p, a, span{
 	font-size: 25px;
 }
 
-.titular {
+.title {
 	display: block;
 	line-height: 60px;
 	margin: 0;
@@ -136,6 +135,7 @@ h1, h2, p, a, span{
 	width: 1050px;
 	height: 800px;
 	margin: .05em auto;
+
 }
 	/*********************************************** HEADER ***********************************************/
 	header {
@@ -144,6 +144,7 @@ h1, h2, p, a, span{
 		.header-menu {
 			font-size: 17px;
 			line-height: 80px;
+
 		}
 			.header-menu li {
 				position: center;
@@ -179,8 +180,9 @@ h1, h2, p, a, span{
 			.menu-box {
 				height: 360px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        /* border: 5px solid #11a8ab; */
 			}
-				.menu-box .titular {
+				.menu-box .title {
 					background: #11a8ab;
 				}
 				.menu-box-menu .icon {
@@ -214,19 +216,19 @@ h1, h2, p, a, span{
 					.menu-box-tab:hover .menu-box-number {
 						background: #e64c65;
 					}
-			.donut-chart-block {
+			.second-chart-block {
 				height: 340px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 			}
-				.donut-chart-block .titular {
+				.second-chart-block .title {
           background: #11a8ab;
 					padding: px 0;
 				}
-				.donut-chart {
+				.second-chart {
 					height: 200px;
 				}
 
-					.donut-chart {
+					.second-chart {
 					  position: relative;
 						width: 200px;
 					  height: 200px;
@@ -235,16 +237,13 @@ h1, h2, p, a, span{
 					 }
 
 				/******************************************
-
 				******************************************
-
-
-
 		/************************************************** MIDDLE CONTAINER **********************************/
 		.middle-container {
 			margin: 0 10px;
+      /* border: 5px solid #11a8ab; */
 		}
-			.profile {
+			.grid {
 				height: 710px;
         width: 738px;
 			}
