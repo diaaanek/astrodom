@@ -9,6 +9,7 @@
    <link rel="stylesheet" href="index.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css"> -->
 
  </head>
@@ -17,53 +18,46 @@
   <div class="main-container">
              <!-- HEADER -->
    <header class="block">
-
+<!--  LOGO -->
      <a class="header-menu-tab">
-
-<i class="fas fa-space-shuttle"></i>
-<img class="logo hvr-buzz-out" src="assets/ASTRODOM.png"></a>
+       <img class="logo hvr-buzz-out" src="assets/ASTRODOM.png"></a>
 
    </header>
 
              <!-- LEFT-CONTAINER -->
   <div class="left-container container">
-      <div class="menu-box block"> <!-- MENU BOX (LEFT-CONTAINER) -->
+
+      <div class="menu-box block" id="b1"> <!-- MENU BOX (LEFT-CONTAINER) -->
       <h2 class="title">AVAILABLE MOVES</h2>
         <ul class="menu-box-menu">
-                         <li>
 
-                             <a class="menu-box-tab" href="#6"><span class="icon fontawesome-arrow-left scnd-font-color"></span>Left</a>
-                         </li>
-                         <li>
-                             <a class="menu-box-tab animated flipOutX" href="#6"><span class="icon fontawesome-arrow-right scnd-font-color"></span>Right</a>
-                         </li>
-                        <li>
-                         <a class="menu-box-tab" href="#6"><span class="icon fontawesome-arrow-right scnd-font-color"></span>Right</a>
-                     </li>
-                     <li>
-                         <a class="menu-box-tab" href="#6"><span class="icon fontawesome-arrow-up scnd-font-color"></span>Up</a>
-                     </li>
-                     <li>
-                         <a class="menu-box-tab" href="#6"><span class="icon fontawesome-arrow-down scnd-font-color"></span>Down</a>
-                     </li>
+
+<!-- draggable="true" -->
+                             <a class="menu-box-tab noselect" draggable="true">
+                               <span class="icon fontawesome-arrow-left scnd-font-color"></span>Left</a>
+
+
+                             <a class="menu-box-tab noselect" draggable="true">
+                               <span class="icon fontawesome-arrow-right scnd-font-color"></span>Right</a>
+
+                         <a class="menu-box-tab noselect" draggable="true">
+                           <span class="icon fontawesome-arrow-right scnd-font-color"></span>Right</a>
+
+                         <a class="menu-box-tab noselect" draggable="true">
+                           <span class="icon fontawesome-arrow-up scnd-font-color"></span>Up</a>
+
+                         <a class="menu-box-tab" draggable="true">
+                           <span class="icon fontawesome-arrow-down scnd-font-color"></span>Down</a>
+
                      </ul>
                  </div>
-                 <div class="second-chart-block block"> <!-- second CHART BLOCK (LEFT-CONTAINER) -->
-                     <h2 class="title animated heartBeat">MAKE YOUR MOVE</h2>
-                     <ul class="menu-box-menu">
-                       <li>
-                           <a class="menu-box-tab" href="#6"> <span class="icon fontawesome-arrow-left scnd-font-color"></span>Test</a>
-                       </li>
 
-                         <!--
-                         <li>
-                             <a class="menu-box-tab" href="#6"><span class="icon fontawesome-arrow-right scnd-font-color"></span>Right</a>
-                         </li>
-                         <a class="menu-box-tab" href="#6"><span class="icon fontawesome-arrow-right scnd-font-color"></span>Right</a>
-                     </li>
-                     <li>
-                         <a class="menu-box-tab" href="#6"><span class="icon fontawesome-arrow-up scnd-font-color"></span>Up</a>
-                     </li> -->
+
+
+
+                 <div class="second-chart-block block" id="b2"> <!-- second CHART BLOCK (LEFT-CONTAINER) -->
+                     <h2 class="title animated heartBeat">MAKE YOUR MOVE</h2>
+                     <ul class="menu-box-menu" id="b2">
 
                      </ul>
                  </div>
@@ -96,10 +90,12 @@
                      </div>
                  </div>
              </div> <!-- end right-container -->
+
+
          </div> <!-- end main-container -->
 
     <script src="src/index.js" charset="utf-8"></script>
+  <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/dragula.min.js'></script>
 
-      <script src="src/draggable.js" charset="utf-8"></script>
      </body>
  </html>
