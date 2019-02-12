@@ -1,6 +1,11 @@
 /************************************ FONTS ************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+@import url('https://fonts.googleapis.com/css?family=Orbitron|Roboto+Mono');
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
 @import url(http://weloveiconfonts.com/api/?family=entypo|fontawesome|zocial);
+/* @import url("hover-min.css"); */
 /* entypo */
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
@@ -46,6 +51,11 @@ p {
 a {
 	text-decoration: none;
 	font-size: 15px;
+}
+img {
+
+  max-width: 100%;
+    max-height: 100%;
 }
 
 
@@ -106,6 +116,7 @@ h1, h2, p, a, span{
 }
 
 .title {
+
 	display: block;
 	line-height: 60px;
 	margin: 0;
@@ -118,6 +129,7 @@ h1, h2, p, a, span{
 	display: block;
 	width: 175px;
 	line-height: 50px;
+  background-image: url('assets/gif.gif');
 	font-size: 16px;
 	font-weight: 700;
 	text-align: center;
@@ -131,7 +143,8 @@ h1, h2, p, a, span{
 /** MAIN CONTAINER **/
 
 .main-container {
-	font-family: 'Ubuntu', sans-serif;
+font-family: 'Roboto Mono', monospace;
+	/* font-family: 'Orbitron', sans-serif; */
 	width: 1050px;
 	height: 800px;
 	margin: .05em auto;
@@ -152,7 +165,9 @@ h1, h2, p, a, span{
     text-align:center;
 			}
 				.header-menu-tab {
-					padding: 0 27px;
+            background-image: url('assets/gif.gif');
+
+					/* padding: 0 27px; */
 					display: block;
 					line-height: 70px;
           vertical-align:middle;
@@ -161,17 +176,24 @@ h1, h2, p, a, span{
 					-webkit-transition: background .3s;
 					transition: background .3s;
 				}
-
-
-
+.logo{
+        height: 80px;
+           width: 450px;
+           padding-top: 25px;
+}
 	/** CONTAINERS **/
 	.container {
 		float: left;
 		width: 300px;
 	}
 		.block {
+      background: #0F2027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
 			margin-bottom: 10px;
-			background: #394264;
+			/* background: #394264; */
 			border-radius: 5px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 		}
@@ -217,10 +239,12 @@ h1, h2, p, a, span{
 						background: #e64c65;
 					}
 			.second-chart-block {
+
 				height: 340px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 			}
 				.second-chart-block .title {
+
           background: #11a8ab;
 					padding: px 0;
 				}
@@ -248,16 +272,15 @@ h1, h2, p, a, span{
         width: 738px;
 			}
 
-
-
     .game-board
               {
+
               	width: 739px;
               	height: 710px;
               	margin: 0 auto;
                 /* background-color: #34495e; */
                 color: #fff;
-                /* border: 5px solid #11a8ab; */
+                border: 3px solid #11a8ab;
                 border-radius: 10px;
 
               	display: grid;
@@ -266,12 +289,77 @@ h1, h2, p, a, span{
 
     .box
           {
-                /* border: 5px solid #11a8ab; */
+            background-image: url('assets/gif.gif');
+                border: 3px solid #11a8ab;
                 border-radius: 1px;
-                  box-shadow: 0 10px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+                  /* box-shadow: 0 10px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
                 /* font-weight: bold; */
                 font-size: 2em;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+          }
+
+
+
+          /* Buzz Out */
+          @-webkit-keyframes hvr-buzz-out {
+            10% {
+              -webkit-transform: translateX(3px) rotate(2deg);
+              transform: translateX(3px) rotate(2deg);
+            }
+            20% {
+              -webkit-transform: translateX(-3px) rotate(-2deg);
+              transform: translateX(-3px) rotate(-2deg);
+            }
+            30% {
+              -webkit-transform: translateX(3px) rotate(2deg);
+              transform: translateX(3px) rotate(2deg);
+            }
+            40% {
+              -webkit-transform: translateX(-3px) rotate(-2deg);
+              transform: translateX(-3px) rotate(-2deg);
+            }
+            50% {
+              -webkit-transform: translateX(2px) rotate(1deg);
+              transform: translateX(2px) rotate(1deg);
+            }
+            60% {
+              -webkit-transform: translateX(-2px) rotate(-1deg);
+              transform: translateX(-2px) rotate(-1deg);
+            }
+            70% {
+              -webkit-transform: translateX(2px) rotate(1deg);
+              transform: translateX(2px) rotate(1deg);
+            }
+            80% {
+              -webkit-transform: translateX(-2px) rotate(-1deg);
+              transform: translateX(-2px) rotate(-1deg);
+            }
+            90% {
+              -webkit-transform: translateX(2px) rotate(0);
+              transform: translateX(1px) rotate(0);
+            }
+            100% {
+              -webkit-transform: translateX(-2px) rotate(0);
+              transform: translateX(-1px) rotate(0);
+            }
+          }
+
+
+          .hvr-buzz-out {
+            /* display: inline-block;
+            vertical-align: middle; */
+            -webkit-transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+          }
+          .hvr-buzz-out:hover, .hvr-buzz-out:focus, .hvr-buzz-out:active {
+            -webkit-animation-name: hvr-buzz-out;
+            animation-name: hvr-buzz-out;
+            -webkit-animation-duration: 0.75s;
+            animation-duration: 0.75s;
+            -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+            -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
           }
