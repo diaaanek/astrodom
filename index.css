@@ -1,12 +1,9 @@
 /************************************ FONTS ************************************/
 
-@import url('https://fonts.googleapis.com/css?family=Orbitron');
-
-@import url('https://fonts.googleapis.com/css?family=Orbitron|Roboto+Mono');
+@import url(https://fonts.googleapis.com/css?family=Orbitron);
+@import url(https://fonts.googleapis.com/css?family=Orbitron|Roboto+Mono);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
 @import url(http://weloveiconfonts.com/api/?family=entypo|fontawesome|zocial);
-/* @import url("hover-min.css"); */
-/* entypo */
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
 }
@@ -14,10 +11,10 @@
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
 }
-
-
 /************************************* END FONTS *************************************/
 
+
+/************************************ BASIC LAYOUT ************************************/
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -37,20 +34,20 @@ ul {
 }
 
 h1 {
-	font-size: 25px;
+	font-size: 20px;
 }
 
 h2 {
-	font-size: 17px;
+	font-size: 20px;
 }
 
 p {
-	font-size: 15px;
+	font-size: 17px;
 }
 
 a {
 	text-decoration: none;
-	font-size: 15px;
+	font-size: 20px;
 }
 img {
 
@@ -138,6 +135,8 @@ h1, h2, p, a, span{
 	-webkit-transition: background .3s;
 	transition: background .3s;
 }
+
+/************************************ END BASIC LAYOUT ************************************/
 
 
 /** MAIN CONTAINER **/
@@ -262,7 +261,7 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 
 				/******************************************
 				******************************************
-		/************************************************** MIDDLE CONTAINER **********************************/
+		/************************************************** GRID MIDDLE CONTAINER **********************************/
 		.middle-container {
 			margin: 0 10px;
       /* border: 5px solid #11a8ab; */
@@ -346,7 +345,7 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
             }
           }
 
-
+/* // logo animations */
           .hvr-buzz-out {
             /* display: inline-block;
             vertical-align: middle; */
