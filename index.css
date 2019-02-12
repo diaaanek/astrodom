@@ -56,7 +56,7 @@ img {
 }
 
 
-h1, h2, p, a, span{
+div, h1, h2, p, a, span{
 	color: #fff;
 }
 	.scnd-font-color {
@@ -225,18 +225,34 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 					/* border-bottom: 1px solid #1f253d; */
 					-webkit-transition: background .2s;
 					transition: background .2s;
+
+           cursor: pointer;
 				}
 					.menu-box-tab:hover {
 						background: #50597b;
 						border-top: 1px solid #1f253d;
 						text-decoration: none;
 					}
+/*
+ Drag and drop */
+      .hovered {
+        border: dotted 1px black;
+      }
+
+      .held {
+        border: solid 1px black;
+        /* background-color: black; */
+      }
+
+      .invisible {
+        display: none;
+      }
 					.menu-box-tab:hover .icon {
 						color: #fff;
 					}
-					.menu-box-tab:hover .menu-box-number {
-						background: #e64c65;
-					}
+
+
+
 			.second-chart-block {
 
 				height: 340px;
@@ -361,4 +377,44 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
             animation-timing-function: linear;
             -webkit-animation-iteration-count: 1;
             animation-iteration-count: 1;
+          }
+
+
+/*
+ DRAGULA LIBRARY */
+
+ #kaban {float:left;position:relative;width:100%;ax-width:100%;height:auto;}
+ 
+          .noselect {
+            -webkit-touch-callout: none;
+              -webkit-user-select: none;
+              -khtml-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+          }
+
+
+          .gu-mirror {
+            cursor:move; cursor:-webkit-grabbing; cursor:-moz-grabbing; cursor:grabbing;
+            position: fixed !important;
+            margin: 0 !important;
+            z-index: 9999 !important;
+            opacity: 1;
+            -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
+          }
+          .gu-hide {
+            display: none !important;
+          }
+          .gu-unselectable {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+          }
+          .gu-transit {
+            opacity: 0.4;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+            filter: alpha(opacity=20);
           }
