@@ -9,7 +9,7 @@ Astrodom is a single page educational game application intended for children to 
 * Implement sessions
 
 ## 🛠 Built With
-* [Javascript] (https://www.javascript.com/)
+* [Javascript](https://www.javascript.com/)
 * [Ruby on Rails](https://rubyonrails.org/) - The web framework used
 * [Postgress](https://www.sqlite.org/) - Database management
 
