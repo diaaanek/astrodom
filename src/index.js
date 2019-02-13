@@ -1,4 +1,5 @@
   let mapGrid = []
+  let board = []
   var gameBoard = document.querySelector(".game-board")
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(response => response.json())
       .then(data => {
         mapGrid = data
+        console.log(mapGrid);
 
         // let nineSquare = mapGrid.filter( map => map.size === 9 )
         // let map1 = nineSquare[2].layout
@@ -36,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // console.log(nineSquare);
         console.log(map4)
         foreachLoopTrial(map4)
-        // foreachLoopTrial(map4)
       })
 
 
@@ -68,10 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 }) //end of DOMContentLoaded
 
-// console.log(mapGrid);
-// let nineSquare = mapGrid.filter( map => map.size === 9 )
-// let sixteenSquare = mapGrid.filter( map => map.size === 16)
-// let twentyFiveSquare = mapGrid.filter( map => map.size === 25)
+
 
 // function newGridLoop(array){
 //   for(let element of array){
@@ -108,13 +106,23 @@ function foreachLoopTrial(map){
   }
 }
 
-
-
-//   return `
-//   <div class="box">${map[0].layout.value}</div>
-// `
+function xycoords() {
+  const rows =  4
+  const columns = 4
+  for (let rowId = 0; rowId<rows; rowId++) {
+    const column = []
+    for (let columnId = 0;columnId<rows;columnId++) {
+      column.push({x:rowId, y:columnId})
+    }
+    board.push(column)
+  }
+  return board
+}
+xycoords()
+console.log(board[0][0]);
 
 function renderFreeHTML(element){
+
   return `
   <div class="box"><h1>${element}</h1></div>
   `
@@ -141,6 +149,14 @@ function renderFinishHTML(element){
 
 
 
+
+
+
+
+
+
+
+//diane's code ///////////////////////////////////////////////
 function changeText(text)
       {
           var display = document.querySelector('.box');
