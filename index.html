@@ -24,19 +24,64 @@
 
    </header>
 
-
+   <!--INTRO MODAL -->
    <div id="difficulty-modal" class="modal">
 
      <div class="modal-content">
        <span class="close">&times;</span>
-       <h2>text here </h2>
-       <p>blahblah</p>
-       <!-- <button id="easy-btn" type="button" class="buton">Easy</button>
-       <button id="med-btn" type="button" class="buton">Medium</button>
-       <button id="hard-btn" type="button" class="buton">Hard</button> -->
+       <img src="assets/WELCOME.png"><br>
+       <h4>Your mission, if you choose to accept, is to return to the spaceship before time runs outs! Avoid all of the aliens on your way back. Earth wouldn't be the same without you... </h4><br><br>
+       <h2>Instructions:</h2>
+       <p>Move the astronaut around the board while avoiding the aliens!</p><br>
+       <p>If you try to navigate outside of the game board, GAME OVER.</p><br>
+       <p>If you try to navigate into alien territory, GAME OVER.</p><br>
+       <p>If you can successfully navigate to your spaceship and make the journey back to Earth, YOU WIN. </p>
+       <!-- <button id="easy-btn" type="button" class="button">Easy</button>
+       <button id="med-btn" type="button" class="button">Medium</button>
+       <button id="hard-btn" type="button" class="button">Hard</button>  -->
      </div>
 
    </div>
+    <!--INTRO MODAL -->
+
+    <!--GAME LOST MODAL -->
+    <div id="lose-modal" class="modal">
+
+      <div class="modal-content">
+        <img src="assets/GAME OVER.png"><br>
+        <h3>You're Lost in Space...</h3><br><br>
+        <button id="try-again-btn" type="button">TRY AGAIN</button>
+      </div>
+
+    </div>
+    <!--GAME LOST MODAL -->
+
+    <!--LEVEL WON MODAL -->
+    <div id="win-modal" class="modal">
+
+      <div class="modal-content">
+        <img src="assets/escaped.png"><br>
+        <h3>Jump on that Spaceship! Let's Go!</h3><br><br>
+        <button id="win-btn" type="button">PROCEED TO NEXT MISSION</button>
+      </div>
+
+    </div>
+    <!--LEVEL WON MODAL -->
+
+    <!--LEVEL WON MODAL -->
+
+    <div id="game-win-modal" class="modal">
+
+      <div class="modal-content">
+        <br>
+        <h3>Jump on that Spaceship! Let's Go!</h3><br><br>
+        <button id="win-btn" type="button">PROCEED TO NEXT MISSION</button>
+      </div>
+
+    </div>
+
+    <!--LEVEL WON MODAL -->
+
 
 
              <!-- LEFT-CONTAINER -->
@@ -45,40 +90,40 @@
     <div class="menu-box block" id="b1"> <!-- MENU BOX (LEFT-CONTAINER) -->
       <h2 class="title">AVAILABLE MOVES</h2>
 
-  <a class="menu-box-tab">
+  <a id="up-event" class="menu-box-tab">
   <span class="icon fontawesome-arrow-up scnd-font-color"></span>  Up</a>
 
-  <a class="menu-box-tab">
-  <span class="icon fontawesome-arrow-up scnd-font-color noselect"></span>  Down</a>
+  <a id="down-event" class="menu-box-tab">
+  <span class="icon fontawesome-arrow-down scnd-font-color noselect"></span>  Down</a>
 
-  <a class="menu-box-tab">
+  <a id="left-event" class="menu-box-tab">
   <span class="icon fontawesome-arrow-left scnd-font-color"></span>  Left</a>
 
-  <a class="menu-box-tab">
+  <a id="right-event" class="menu-box-tab">
   <span class="icon fontawesome-arrow-right scnd-font-color"></span>  Right</a>
 
       </div>  <!-- end menu box left contiainer -->
 
 
   <div class="second-chart-block block" id="b2"> <!-- second CHART BLOCK (LEFT-CONTAINER) -->
-  <h2 class="title animated heartBeat">MAKE YOUR MOVE</h2>
+  <h2 class="title animated heartBeat">MOVES REMAINING</h2>
 
 
 <!-- ********* ADDING TEST CODE -->
 
 
-    <div id="boards">
+    <!-- <div id="boards">
 
       <div class="board" id="board1">
-        <!-- <header>Available Moves</header> -->
+         <header>Available Moves</header> -->
 
           <!-- <div class="card"><span class="cardtitle noselect">Left</span></div> -->
 
           <!-- <div class="card"><span class="cardtitle noselect">Right</span></div> -->
-      </div>
+      <!-- </div>
 
 
-    </div>
+    </div> -->
 <!--     boards  -->
 
 <!-- END TESSSST CODE -->
