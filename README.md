@@ -6,7 +6,7 @@ Astrodom is a single page educational game application intended for children to 
 * 
 
 ## Stretch Goals
-* Implement sessions
+* 
 
 ## 🛠 Built With
 * [Javascript](https://www.javascript.com/)
@@ -17,7 +17,7 @@ Astrodom is a single page educational game application intended for children to 
 To get started, have the backend API running
 ` `
 Fork and clone repo:
-` https://github.com/diaaanek/IndieBiz `
+` https://github.com/diaaanek/ `
 
 Install all dependencies:
 
