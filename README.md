@@ -14,6 +14,8 @@ Astrodom is a single page educational game application intended for children to 
 * [Postgress](https://www.sqlite.org/) - Database management
 
 ## Installation Guide
+To get started, have the backend API running
+` `
 Fork and clone repo:
 ` https://github.com/diaaanek/IndieBiz `
 
