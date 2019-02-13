@@ -5,7 +5,7 @@ Astrodom is a single page educational game application intended for children to 
 ## 📌 Features:
 * 
 
-## Stretch Goals
+## 🎯Stretch Goals
 * 
 
 ## 🛠 Built With
@@ -13,7 +13,7 @@ Astrodom is a single page educational game application intended for children to 
 * [Ruby on Rails](https://rubyonrails.org/) - The web framework used
 * [Postgress](https://www.sqlite.org/) - Database management
 
-## Installation Guide
+## 📑Installation Guide
 To get started, have the backend API running
 ` `
 Fork and clone repo:
@@ -45,7 +45,7 @@ Contributions are welcomed!  Fork, fix, then send a pull request.
 
 Bug reports and pull requests are welcome on GitHub at [astrodom repo](https://github.com/diaaanek/astrodom_frontend), please open Issues to provide feedback.
 
-## Authors
+## ✏️ Authors
 
 * **Diane Korongy** - [Diane Korongy](https://github.com/diaaanek)
 * **Gabbie Piraino** - [Gabbie Piraino](https://github.com/ )
