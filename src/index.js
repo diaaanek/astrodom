@@ -3,7 +3,20 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  const modal = document.getElementById("difficulty-modal")
+  const span = document.querySelector(".close")
 
+  window.onload = function(){
+    modal.style.display = "block"
+  }
+  span.onclick = function(){
+    modal.style.display = "none"
+  }
+  window.onclick = function(e){
+    if(e.target == modal){
+      modal.style.display = "none"
+    }
+  }
 
   const endPoint = 'http://localhost:3000/api/v1/maps'
     fetch(endPoint)
@@ -13,14 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // let nineSquare = mapGrid.filter( map => map.size === 9 )
         // let map1 = nineSquare[2].layout
-        // let sixteenSquare = mapGrid.filter( map => map.size === 16)
-        // let map4 = sixteenSquare[1].layout
-        let twentyFiveSquare = mapGrid.filter( map => map.size === 25)
-        let map7 = twentyFiveSquare[0].layout
+        let sixteenSquare = mapGrid.filter( map => map.size === 16)
+        let map4 = sixteenSquare[0].layout
+        let map5 = sixteenSquare[1].layout
+        let map6 = sixteenSquare[2].layout
+        // let twentyFiveSquare = mapGrid.filter( map => map.size === 25)
+        // let map7 = twentyFiveSquare[0].layout
         // console.log(mapGrid);
         // console.log(nineSquare);
-        // console.log(map1)
-        foreachLoopTrial(map7)
+        console.log(map4)
+        foreachLoopTrial(map4)
+        // foreachLoopTrial(map4)
       })
 
 
@@ -57,14 +73,36 @@ document.addEventListener("DOMContentLoaded", () => {
 // let sixteenSquare = mapGrid.filter( map => map.size === 16)
 // let twentyFiveSquare = mapGrid.filter( map => map.size === 25)
 
+// function newGridLoop(array){
+//   for(let element of array){
+//     if(element === 0){
+//       gameBoard.innerHTML += renderFreeHTML(element)
+//     } if(element === 1) {
+//       gameBoard.innerHTML += renderAlienHTML(element)
+//     }
+//      if(element === 2){
+//       gameBoard.innerHTML += renderStartHTML(element)
+//     }
+//     if (element === 3){
+//       gameBoard.innerHTML += renderFinishHTML(element)
+//     }
+//   }
+// }
 
 function foreachLoopTrial(map){
   for(let array of map){
     array.map(element => {
-      if(element === true){
-        gameBoard.innerHTML += renderTrueHTML(element)
-      } else {
-        gameBoard.innerHTML += renderFalseHTML(element)
+      if(element === 0){
+        gameBoard.innerHTML += renderFreeHTML(element)
+      }
+      if(element === 1) {
+        gameBoard.innerHTML += renderAlienHTML(element)
+      }
+      if(element === 2){
+        gameBoard.innerHTML += renderStartHTML(element)
+      }
+      if(element === 3){
+        gameBoard.innerHTML += renderFinishHTML(element)
       }
     })
   }
@@ -76,17 +114,31 @@ function foreachLoopTrial(map){
 //   <div class="box">${map[0].layout.value}</div>
 // `
 
-function renderTrueHTML(element){
+function renderFreeHTML(element){
   return `
   <div class="box"><h1>${element}</h1></div>
   `
 }
 
-function renderFalseHTML(element){
+function renderAlienHTML(element){
   return `
   <div class="box"><h1>${element}</h1></div>
   `
 }
+
+function renderStartHTML(element){
+  return `
+  <div class="box"><h1>${element}</h1></div>
+  `
+}
+
+function renderFinishHTML(element){
+  return `
+  <div class="box"><h1>${element}</h1></div>
+  `
+}
+
+
 
 
 function changeText(text)
