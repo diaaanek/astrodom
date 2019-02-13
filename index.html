@@ -24,44 +24,58 @@
 
    </header>
 
+
+
+
              <!-- LEFT-CONTAINER -->
   <div class="left-container container">
 
-      <div class="menu-box block" id="b1"> <!-- MENU BOX (LEFT-CONTAINER) -->
+    <div class="menu-box block" id="b1"> <!-- MENU BOX (LEFT-CONTAINER) -->
       <h2 class="title">AVAILABLE MOVES</h2>
-        <ul class="menu-box-menu">
+
+  <a class="menu-box-tab">
+  <span class="icon fontawesome-arrow-up scnd-font-color"></span>  Up</a>
+
+  <a class="menu-box-tab">
+  <span class="icon fontawesome-arrow-up scnd-font-color noselect"></span>  Down</a>
+
+  <a class="menu-box-tab">
+  <span class="icon fontawesome-arrow-left scnd-font-color"></span>  Left</a>
+
+  <a class="menu-box-tab">
+  <span class="icon fontawesome-arrow-right scnd-font-color"></span>  Right</a>
+
+      </div>  <!-- end menu box left contiainer -->
 
 
-<!-- draggable="true" -->
-                             <a class="menu-box-tab noselect" draggable="true">
-                               <span class="icon fontawesome-arrow-left scnd-font-color"></span>Left</a>
+  <div class="second-chart-block block" id="b2"> <!-- second CHART BLOCK (LEFT-CONTAINER) -->
+  <h2 class="title animated heartBeat">MAKE YOUR MOVE</h2>
 
 
-                             <a class="menu-box-tab noselect" draggable="true">
-                               <span class="icon fontawesome-arrow-right scnd-font-color"></span>Right</a>
-
-                         <a class="menu-box-tab noselect" draggable="true">
-                           <span class="icon fontawesome-arrow-right scnd-font-color"></span>Right</a>
-
-                         <a class="menu-box-tab noselect" draggable="true">
-                           <span class="icon fontawesome-arrow-up scnd-font-color"></span>Up</a>
-
-                         <a class="menu-box-tab" draggable="true">
-                           <span class="icon fontawesome-arrow-down scnd-font-color"></span>Down</a>
-
-                     </ul>
-                 </div>
+<!-- ********* ADDING TEST CODE -->
 
 
+    <div id="boards">
+
+      <div class="board" id="board1">
+        <!-- <header>Available Moves</header> -->
+
+          <!-- <div class="card"><span class="cardtitle noselect">Left</span></div> -->
+
+          <!-- <div class="card"><span class="cardtitle noselect">Right</span></div> -->
+      </div>
 
 
-                 <div class="second-chart-block block" id="b2"> <!-- second CHART BLOCK (LEFT-CONTAINER) -->
-                     <h2 class="title animated heartBeat">MAKE YOUR MOVE</h2>
-                     <ul class="menu-box-menu" id="b2">
+    </div>
+<!--     boards  -->
 
-                     </ul>
-                 </div>
-             </div>
+<!-- END TESSSST CODE -->
+
+    </div>
+    <!-- end seconf chart block -->
+</div>
+              <!-- END LEFT-CONTAINER -->
+
 
              <!-- MIDDLE-CONTAINER -->
              <div class="middle-container container">
@@ -79,6 +93,7 @@
          </div> <!-- end main-container -->
 
     <script src="src/index.js" charset="utf-8"></script>
+    <script src="src/draggable.js" charset="utf-8"></script>
   <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/dragula.min.js'></script>
 
      </body>
