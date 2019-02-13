@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
   	document.getElementById('b2')
   ])
 
+
   // Scrollable area
   // var element = document.getElementById("boards"); // Count Boards
   // var numberOfBoards = element.getElementsByClassName('board').length;
@@ -70,6 +71,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // function disableselect(e) {return false;}
   // document.onselectstart = new Function ()
   // document.onmousedown = disableselect
+
+  // export class CopyComponent {
+  //   constructor(private dragulaService: DragulaService) {
+  //     dragulaService.createGroup('COPYABLE', {
+  //       copy: (el, source) => {
+  //         return source.id === 'b1';
+  //       },
+  //       accepts: (el, target, source, sibling) => {
+  //         // To avoid dragging from right to left container
+  //         return target.id !== 'b2';
+  //       }
+  //     });
+  //   }
+  // }
+
 
 
 }) //end of DOMContentLoaded
