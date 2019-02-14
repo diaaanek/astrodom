@@ -3,10 +3,10 @@
 Astrodom is a single page educational game application intended for children to learn the javascript event looping/callstack
 
 ## 📌 Features:
-* 
+*
 
 ## 🎯 Stretch Goals
-* 
+*
 
 ## 🛠 Built With
 * [Javascript](https://www.javascript.com/)
@@ -48,8 +48,8 @@ Bug reports and pull requests are welcome on GitHub at [astrodom repo](https://g
 ## ✏️ Authors
 
 * **Diane Korongy** - [Diane Korongy](https://github.com/diaaanek)
-* **Gabbie Piraino** - [Gabbie Piraino](https://github.com/ )
-* **Harlan Taub** - [Harlan Taub](https://github.com/ )
+* **Gabbie Piraino** - [Gabbie Piraino](https://github.com/pirainogi )
+* **Harlan Taub** - [Harlan Taub](https://github.com/harlangtv )
 
 ## 📗 License
 
