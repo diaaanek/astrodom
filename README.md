@@ -1,5 +1,5 @@
 # Astrodom Front-end
-<img src="/assets/astrodom.png"/>
+<img src="assets/astrodom.png"/>
 Astrodom is a single page educational game application intended for children to learn the javascript event looping/callstack
 
 ## 📌 Features:
