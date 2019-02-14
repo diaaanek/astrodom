@@ -2,8 +2,14 @@
   let board = []
   var gameBoard = document.querySelector(".game-board")
   const astronaut = `<img src="assets/astroman.png">`
-  const alien = `<img src="assets/alien.png">`
+  const alien = `<img class='shake-slow shake-constant' src="assets/alien.png">`
   const homebase = `<img src="assets/spaceship.png">`
+
+  const availableMoves = document.querySelector("#b1")
+  const movesRemaining = document.querySelector("#b2")
+
+  const leftMove = document.querySelector("#left-event")
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -53,44 +59,85 @@ document.addEventListener("DOMContentLoaded", () => {
   //
 
   // dragula library
+ // dragula([availableMoves, movesRemaining])
 
-  dragula([
-  	document.getElementById('b1'),
-  	document.getElementById('b2')
-  ])
+ var drake = dragula([availableMoves, movesRemaining], {
+    copy: true,
+  });
 
+  dragula([movesRemaining], {
+    removeOnSpill: true,
+  });
 
-  // Scrollable area
-  // var element = document.getElementById("boards"); // Count Boards
-  // var numberOfBoards = element.getElementsByClassName('board').length;
-  // var boardsWidth = numberOfBoards*316 // Width of all Boards
-  // console.log(boardsWidth);
-  // element.style.width = boardsWidth+"px"; // set Width
+drake.on('drag', function(el,source) {
+  console.log("HEY", source, el)
+  document.getElementsByTagName('body')[0].style.backgroundColor = '#28a0ef';
 
-  // disable text-selection
-  // function disableselect(e) {return false;}
-  // document.onselectstart = new Function ()
-  // document.onmousedown = disableselect
+}); // end drag event listener
 
-  // export class CopyComponent {
-  //   constructor(private dragulaService: DragulaService) {
-  //     dragulaService.createGroup('COPYABLE', {
-  //       copy: (el, source) => {
-  //         return source.id === 'b1';
-  //       },
-  //       accepts: (el, target, source, sibling) => {
-  //         // To avoid dragging from right to left container
-  //         return target.id !== 'b2';
-  //       }
-  //     });
-  //   }
-  // }
+drake.on('drop', function(el, target){
+    console.log("DROP TARGET", el, target)
+  if(el.id === 'up-event'){
+    el.style.border = '2px dashed white';
+    document.getElementsByTagName('body')[0].style.backgroundColor = 'white';
 
+  }
+  if(el.id === 'down-event'){
+    console.log("DOWN")
+        el.style.border = '2px dashed white';
 
+        gameBoard.innerHTML =
+      `
+      <div id="1" class="box"></div>
+      <div id="2" class="box"></div>
+      <div id="3" class="box"></div>
+      <div id="4" class="box"></div>
+      <div id="5" class="box"><img src="assets/astroman.png"></div>
+      <div id="6" class="box"><img class='shake-slow shake-constant'src="assets/alien.png"></div>
+      <div id="7" class="box"><img class='shake-slow shake-constant'src="assets/alien.png"></div>
+      <div id="8" class="box"></div>
+      <div id="9" class="box"></div>
+      <div id="10" class="box"><img src="assets/spaceship.png"></div>
+      <div id="11" class="box"><img class='shake-slow shake-constant' src="assets/alien.png"></div>
+      <div id="12" class="box"></div>
+      <div id="13" class="box"><img src="assets/alien.png"></div>
+      <div id="14" class="box"></div>
+      <div id="15" class="box"></div>
+      <div id="16" class="box"></div>
+      `
+  }
+  if(el.id === 'left-event'){
+    console.log("LEFT")
+    el.style.border = '2px dashed white';
+    gameBoard.innerHTML =
+  `
+  <div id="1" class="box"><img src="assets/astroman.png"></div>
+  <div id="2" class="box"></div>
+  <div id="3" class="box"></div>
+  <div id="4" class="box"></div>
+  <div id="5" class="box"></div>
+  <div id="6" class="box"><img class='shake-slow shake-constant' src="assets/alien.png"></div>
+  <div id="7" class="box"><img class='shake-slow shake-constant' src="assets/alien.png"></div>
+  <div id="8" class="box"></div>
+  <div id="9" class="box"></div>
+  <div id="10" class="box"><img src="assets/spaceship.png"></div>
+  <div id="11" class="box"><img class='shake-slow shake-constant' src="assets/alien.png"></div>
+  <div id="12" class="box"></div>
+  <div id="13" class="box"><img class='shake-slow shake-constant' src="assets/alien.png"></div>
+  <div id="14" class="box"></div>
+  <div id="15" class="box"></div>
+  <div id="16" class="box"></div>
+  `
+  }
+
+  if(el.id === 'right-event'){
+    console.log("RIGHT")
+    el.style.border = '2px dashed white';
+      document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
+  }
+})
 
 }) //end of DOMContentLoaded
-
-
 
 // function newGridLoop(array){
 //   for(let element of array){
@@ -148,7 +195,6 @@ function foreachLoopTrial(map){
 // console.log(board);
 
 function renderFreeHTML(element){
-
   return `
   <div id="${tileId}" class="box"></div>
   `
@@ -172,6 +218,8 @@ function renderFinishHTML(element){
   `
 }
 
+
+
 const map4LegalMoves = {1: {up: null, down: 5, left: null, right: 2},
               2: {up: null, down: null, left: 1, right: 3},
               3: {up: null, down: null, left: 2, right: 4},
@@ -184,6 +232,8 @@ const map4LegalMoves = {1: {up: null, down: 5, left: null, right: 2},
               15: {up: null, down: null, left: 14, right: 16},
               16: {up: 12, down: null, left: 15, right: null}
               }
+
+               // const one = map4LegalMoves[1]['up']
 
 const map5LegalMoves = {1: {up: null, down: 5, left: null, right: 2},
               2: {up: null, down: null, left: 1, right: 3},
@@ -211,33 +261,12 @@ const map5LegalMoves = {1: {up: null, down: 5, left: null, right: 2},
               16: {up: 12, down: null, left: "win", right: null}
               }//end of map6
 
-// console.log(map4LegalMoves[1].left);
+// console.log(map4LegalMoves[1]);
 
-
-
-
-
-
-
-
-
-//diane's code ///////////////////////////////////////////////
-function changeText(text)
-      {
-          var display = document.querySelector('.box');
-          display.innerHTML = "";
-          display.innerHTML = text;
-      }
-        function changeback(text)
-      {
-          var display = document.querySelector('.box');
-          display.innerHTML = "";
-          display.innerHTML = text;
-      }
-
-
-
-// let img = document.createElement("img");
-// img.src = "assets/planet.png";
-// var src = document.querySelector('.box');
-// src.appendChild(img);
+      // function renderLeftMoves(){
+      //       leftMove.addEventListener('click', e=> {
+      //          gridBox
+      //       })
+      //       }
+      //
+      // renderLeftMoves()

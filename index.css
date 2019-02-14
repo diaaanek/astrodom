@@ -1,5 +1,6 @@
 /************************************ FONTS ************************************/
 
+
 @import url(https://fonts.googleapis.com/css?family=Orbitron);
 @import url(https://fonts.googleapis.com/css?family=Orbitron|Roboto+Mono);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
@@ -221,12 +222,15 @@ font-family: 'Roboto Mono', monospace;
 		.header-menu {
 			font-size: 17px;
 			line-height: 80px;
+      border-radius: 15px;
 
 		}
 			.header-menu li {
 				position: center;
         vertical-align:middle;
     text-align:center;
+    border-radius: 15px;
+
 			}
 				.header-menu-tab {
             background-image: url('assets/gif.gif');
@@ -239,6 +243,7 @@ font-family: 'Roboto Mono', monospace;
 					font-size: 25px;
 					-webkit-transition: background .3s;
 					transition: background .3s;
+          border-radius: 15px;
 				}
 .logo{
         height: 80px;
@@ -264,7 +269,7 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 		/******************************************** LEFT CONTAINER *****************************************/
 		.left-container {}
 			.menu-box {
-				height: 360px;
+				height: 330px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
         /* border: 5px solid #11a8ab; */
 			}
@@ -320,7 +325,7 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 
 			.second-chart-block {
 
-				height: 340px;
+				height: 370px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 			}
 				.second-chart-block .title {
@@ -538,3 +543,29 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
    filter: alpha(opacity=20);
  }
+
+
+
+ .animated {
+             -webkit-animation-duration: 20s;
+             animation-duration: 20s;
+             -webkit-animation-fill-mode: both;
+             animation-fill-mode: both;
+          }
+
+          @-webkit-keyframes shake {
+             0%, 100% {-webkit-transform: translateX(0);}
+             10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
+             20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+          }
+
+          @keyframes shake {
+             0%, 100% {transform: translateX(0);}
+             10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+             20%, 40%, 60%, 80% {transform: translateX(10px);}
+          }
+
+          .shake {
+             -webkit-animation-name: shake;
+             animation-name: shake;
+          }
