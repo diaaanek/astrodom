@@ -1,11 +1,19 @@
 //*************** GLOBAL VARIABLES ***************//
 
 let mapGrid = []
+let tileId = 0
+let level = 1
+// let level2 = mapGrid[1].layout
+// foreachLoopTrial(level2)
+// level 3: mapGrid[2].layout
 let board = []
 var gameBoard = document.querySelector(".game-board")
 let currentAstroPosition
 let winPosition
-//GP NOTE TO SELF: FIND A WAY TO ABSTRACT WHAT MAP WE ARE CURRENTLY PLAYING IN
+const loseModal = document.getElementById("lose-modal")
+
+let currentMap
+
 // console.log(currentAstroPosition, winPosition);
 
 const astronaut = `<img id="astronaut" src="assets/astroman.png">`
@@ -26,6 +34,7 @@ const endPoint = 'http://localhost:3000/api/v1/maps'
 
 // introModal()
 
+
 //*************** BEGINNING OF FETCH ***************//
 fetch(endPoint)
   .then(response => response.json())
@@ -34,16 +43,25 @@ fetch(endPoint)
 
     // let nineSquare = mapGrid.filter( map => map.size === 9 )
     // let map1 = nineSquare[2].layout
-    let sixteenSquare = mapGrid.filter( map => map.size === 16)
-    let map4 = sixteenSquare[0].layout
-    let map5 = sixteenSquare[1].layout
-    let map6 = sixteenSquare[2].layout
+    // let sixteenSquare = mapGrid.filter( map => map.size === 16)
+    // let map4 = sixteenSquare[0].layout
+    currentMap = mapGrid[level].layout
+    // console.log(map4)
+    // let map5 = sixteenSquare[1].layout
+    // console.log(map5)
+    // let map6 = sixteenSquare[2].layout
+
+
+    console.log(currentMap)
+     // sixteenSquare[parseInt(`${level}`)].layout
+
+    // console.log(currentMap)
     // let twentyFiveSquare = mapGrid.filter( map => map.size === 25)
     // let map7 = twentyFiveSquare[0].layout
     // console.log(mapGrid);
     // console.log(nineSquare);
     // console.log(map4)
-    foreachLoopTrial(map5) // FUNCTION TO RENDER THE MAP
+    foreachLoopTrial(currentMap) // FUNCTION TO RENDER THE MAP
 
     currentAstroPosition = parseInt(document.getElementById("astronaut").parentElement.id)
     winPosition = parseInt(document.getElementById("spaceship").parentElement.id)
@@ -88,23 +106,33 @@ drake.on('drag', function(el,source) {
 //*************** END OF DRAG START LISTENER ***************//
 
 //*************** BEGINNING OF DRAG DROP LISTENER ***************//
-
+// let legal = 0
+// let legal = 1
 drake.on('drop', function(el, target){
 
+//*************** UP MOVEMENT ***************//
   if(el.id === 'up-event'){
-    console.log("DROP TARGET", el, target, winPosition)
+    // console.log("DROP TARGET", el, target, winPosition)
     el.style.border = '2px dashed white';
     document.getElementsByTagName('body')[0].style.backgroundColor = 'white';
     //compare the div id of the currentAstroPosition against the legal moves of the current map and asking 1st if the up move is an integer and if so, move the astronaut to the value of up
+
+    //legalMoves[legal] *** PAY ATTENTION TO ME WHEN YOU NEED TO ABSTRACT THE LEVEL RULES ***
+
     if(map5LegalMoves[currentAstroPosition].up === 0)
     //CONFIRMING IF LEGAL MOVE HERE
     {
       console.log("game over");
-      //GP TO DO: call lose modal *****
+      loseModal.style.display = "block"
     }
     if(map5LegalMoves[currentAstroPosition].up === "win"){
-      console.log("you win");
+      level++
+      winModal()
+      // legal++
+      // console.log("you win");
+
     }
+    //
     else{
       console.log("legal move");
       let newAstroPosition = map5LegalMoves[currentAstroPosition].up
@@ -115,21 +143,24 @@ drake.on('drop', function(el, target){
       oldDiv.innerHTML = ""
       currentAstroPosition = newAstroPosition
     }
-
-
-
   }
+  //*************** UP MOVEMENT ***************//
+
+  //*************** DOWN MOVEMENT ***************//
   if(el.id === 'down-event'){
-    console.log("DOWN", el, target)
+    // console.log("DOWN", el, target)
         el.style.border = '2px dashed white';
 
-        if(map5LegalMoves[currentAstroPosition].down === 0) //CONFIRMING IF LEGAL MOVE HERE
+        if(`${currentMap}LegalMoves`[currentAstroPosition].down === 0) //CONFIRMING IF LEGAL MOVE HERE
         {
           console.log("game over");
-                //GP TO DO: call lose modal *****
+          loseModal.style.display = "block"
         }
         if(map5LegalMoves[currentAstroPosition].down === "win"){
-          console.log("you win");
+          // console.log("you win");
+          level++
+          winModal()
+
         }
         else{
           console.log("legal move");
@@ -142,31 +173,39 @@ drake.on('drop', function(el, target){
           currentAstroPosition = newAstroPosition
         }
   }
+    //*************** DOWN MOVEMENT ***************//
+
+    //*************** LEFT MOVEMENT ***************//
   if(el.id === 'left-event'){
-    console.log("LEFT")
+    // console.log("LEFT")
     el.style.border = '2px dashed white';
 
     if(map5LegalMoves[currentAstroPosition].left === 0)
     //CONFIRMING IF LEGAL MOVE HERE
     {
       console.log("game over");
-            //GP TO DO: call lose modal *****
+      loseModal.style.display = "block"
     }
     if(map5LegalMoves[currentAstroPosition].left === "win"){
       console.log("you win");
+      // console.log("you win");
+      level++
+      winModal()
     }
     else{
       console.log("legal move");
       let newAstroPosition = map5LegalMoves[currentAstroPosition].left
       let newDiv = document.getElementById(`${newAstroPosition}`)
       let oldDiv = document.getElementById(`${currentAstroPosition}`)
-      console.log(newAstroPosition, oldDiv, newDiv);
+      // console.log(newAstroPosition, oldDiv, newDiv);
       newDiv.innerHTML += astronaut
       oldDiv.innerHTML = ""
       currentAstroPosition = newAstroPosition
     }
   }
+  //*************** LEFT MOVEMENT ***************//
 
+  //*************** RIGHT MOVEMENT ***************//
   if(el.id === 'right-event'){
     console.log("RIGHT")
     el.style.border = '2px dashed white';
@@ -177,22 +216,26 @@ drake.on('drop', function(el, target){
           //CONFIRMING IF LEGAL MOVE HERE
           {
             console.log("game over");
-                  //GP TO DO: call lose modal *****
+            loseModal.style.display = "block"
           }
           if(map5LegalMoves[currentAstroPosition].right === "win"){
-            console.log("you win");
+            // console.log("you win");
+            level++
+            winModal()
           }
           else{
             console.log("legal move");
             let newAstroPosition = map5LegalMoves[currentAstroPosition].right
             let newDiv = document.getElementById(`${newAstroPosition}`)
             let oldDiv = document.getElementById(`${currentAstroPosition}`)
-            console.log(newAstroPosition, oldDiv, newDiv);
+            // console.log(newAstroPosition, oldDiv, newDiv);
             newDiv.innerHTML += astronaut
             oldDiv.innerHTML = ""
             currentAstroPosition = newAstroPosition
           }
   }
+    //*************** RIGHT MOVEMENT ***************//
+
 })
 //*************** END OF DRAG DROP LISTENER ***************//
 
@@ -215,7 +258,7 @@ drake.on('drop', function(el, target){
 //     }
 //   }
 // }
-let tileId = 0
+
 
 function foreachLoopTrial(map){
   for(let array of map){
@@ -240,20 +283,6 @@ function foreachLoopTrial(map){
   }
 }
 
-// function xycoords() {
-//   const rows =  4
-//   const columns = 4
-//   for (let rowId = 0; rowId<rows; rowId++) {
-//     const column = []
-//     for (let columnId = 0;columnId<rows;columnId++) {
-//       column.push({x:rowId, y:columnId})
-//     }
-//     board.push(column)
-//   }
-//   return board
-// }
-// xycoords()
-// console.log(board);
 
 function renderFreeHTML(element){
   return `

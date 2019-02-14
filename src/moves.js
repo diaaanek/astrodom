@@ -1,5 +1,4 @@
-//
-
+//hard coded allowed moves based on hardcoded map in database //
 
 const map4LegalMoves = {1: {up: 0, down: 5, left: 0, right: 2},
               2: {up: 0, down: 0, left: 1, right: 3},
@@ -13,8 +12,6 @@ const map4LegalMoves = {1: {up: 0, down: 5, left: 0, right: 2},
               15: {up: 0, down: 0, left: 14, right: 16},
               16: {up: 12, down: 0, left: 15, right: 0}
               }
-
-               // const one = map4LegalMoves[1]['up']
 
 const map5LegalMoves = {1: {up: 0, down: 5, left: 0, right: 2},
               2: {up: 0, down: 0, left: 1, right: 3},
