@@ -1,68 +1,71 @@
-  let mapGrid = []
-  let board = []
-  var gameBoard = document.querySelector(".game-board")
-  const astronaut = `<img src="assets/astroman.png">`
-  const alien = `<img class='shake-slow shake-constant' src="assets/alien.png">`
-  const homebase = `<img src="assets/spaceship.png">`
+//*************** GLOBAL VARIABLES ***************//
 
-  const availableMoves = document.querySelector("#b1")
-  const movesRemaining = document.querySelector("#b2")
+let mapGrid = []
+let board = []
+var gameBoard = document.querySelector(".game-board")
+let currentAstroPosition
+let winPosition
+//GP NOTE TO SELF: FIND A WAY TO ABSTRACT WHAT MAP WE ARE CURRENTLY PLAYING IN
+// console.log(currentAstroPosition, winPosition);
 
-  const leftMove = document.querySelector("#left-event")
+const astronaut = `<img id="astronaut" src="assets/astroman.png">`
+const alien = `<img class='shake-slow shake-constant' src="assets/alien.png">`
+const homebase = `<img id="spaceship" src="assets/spaceship.png">`
 
 
+const availableMoves = document.querySelector("#b1")
+const movesRemaining = document.querySelector("#b2")
+
+//*************** GLOBAL VARIABLES ***************//
+
+
+//*************** BEGINNING OF DOM EVENT LISTENER ***************//
 document.addEventListener("DOMContentLoaded", () => {
 
-  const modal = document.getElementById("difficulty-modal")
-  const loseModal = document.getElementById("lose-modal")
-  const winModal = document.getElementById("win-modal")
-  const span = document.querySelector(".close")
+const endPoint = 'http://localhost:3000/api/v1/maps'
 
-  window.onload = function(){
-    modal.style.display = "block"
-  }
-  span.onclick = function(){
-    modal.style.display = "none"
-  }
-  window.onclick = function(e){
-    if(e.target == modal){
-      modal.style.display = "none"
-    }
-  }
+// introModal()
 
-  const endPoint = 'http://localhost:3000/api/v1/maps'
-    fetch(endPoint)
-      .then(response => response.json())
-      .then(data => {
-        mapGrid = data
-        // console.log(mapGrid);
+//*************** BEGINNING OF FETCH ***************//
+fetch(endPoint)
+  .then(response => response.json())
+  .then(data => {
+    mapGrid = data
 
-        // let nineSquare = mapGrid.filter( map => map.size === 9 )
-        // let map1 = nineSquare[2].layout
-        let sixteenSquare = mapGrid.filter( map => map.size === 16)
-        let map4 = sixteenSquare[0].layout
-        let map5 = sixteenSquare[1].layout
-        let map6 = sixteenSquare[2].layout
-        // let twentyFiveSquare = mapGrid.filter( map => map.size === 25)
-        // let map7 = twentyFiveSquare[0].layout
-        // console.log(mapGrid);
-        // console.log(nineSquare);
-        // console.log(map4)
-        foreachLoopTrial(map4)
-      })
+    // let nineSquare = mapGrid.filter( map => map.size === 9 )
+    // let map1 = nineSquare[2].layout
+    let sixteenSquare = mapGrid.filter( map => map.size === 16)
+    let map4 = sixteenSquare[0].layout
+    let map5 = sixteenSquare[1].layout
+    let map6 = sixteenSquare[2].layout
+    // let twentyFiveSquare = mapGrid.filter( map => map.size === 25)
+    // let map7 = twentyFiveSquare[0].layout
+    // console.log(mapGrid);
+    // console.log(nineSquare);
+    // console.log(map4)
+    foreachLoopTrial(map5) // FUNCTION TO RENDER THE MAP
+
+    currentAstroPosition = parseInt(document.getElementById("astronaut").parentElement.id)
+    winPosition = parseInt(document.getElementById("spaceship").parentElement.id)
+    // console.log(currentAstroPosition, winPosition);
+  })
+  //*************** END OF FETCH ***************//
+
+
 
 
   //Diane's code (adjusting DOM content to reflect certain HTML/CSS assets)
-  // dragula library
+// dragula library
 
-//   el - the item that is being dropped
+// el - the item that is being dropped
 //
-// target - the container on whichthe item is being dropped
+// target - the container on which the item is being dropped
 //
 // source - the container from which the item was dragged
 //
 // sibling - the item in the target container before which the item is being dropped, null if being dropped as last item
- // dragula([availableMoves, movesRemaining])
+
+// dragula([availableMoves, movesRemaining])
 
  var drake = dragula([availableMoves, movesRemaining], {
     copy: true,
@@ -72,76 +75,130 @@ document.addEventListener("DOMContentLoaded", () => {
     removeOnSpill: true,
   });
 
+
+
+//*************** END OF DRAG START LISTENER ***************//
 drake.on('drag', function(el,source) {
-  if(el.id === 'up-event'){
-  console.log("HEY", source, el)
-  document.getElementsByTagName('body')[0].style.backgroundColor = '#28a0ef';
-}
-}); // end drag event listener
+  if(el.id === "up-event"){
+    // console.log("HEY", source, el)
+    document.getElementsByTagName('body')[0].style.backgroundColor = '#28a0ef';
+  }
+})
+  //makes a copy of the dragged event
+//*************** END OF DRAG START LISTENER ***************//
+
+//*************** BEGINNING OF DRAG DROP LISTENER ***************//
 
 drake.on('drop', function(el, target){
-    console.log("DROP TARGET", el, target)
+
   if(el.id === 'up-event'){
+    console.log("DROP TARGET", el, target, winPosition)
     el.style.border = '2px dashed white';
     document.getElementsByTagName('body')[0].style.backgroundColor = 'white';
+    //compare the div id of the currentAstroPosition against the legal moves of the current map and asking 1st if the up move is an integer and if so, move the astronaut to the value of up
+    if(map5LegalMoves[currentAstroPosition].up === 0)
+    //CONFIRMING IF LEGAL MOVE HERE
+    {
+      console.log("game over");
+      //GP TO DO: call lose modal *****
+    }
+    if(map5LegalMoves[currentAstroPosition].up === "win"){
+      console.log("you win");
+    }
+    else{
+      console.log("legal move");
+      let newAstroPosition = map5LegalMoves[currentAstroPosition].up
+      let newDiv = document.getElementById(`${newAstroPosition}`)
+      let oldDiv = document.getElementById(`${currentAstroPosition}`)
+      console.log(newAstroPosition, oldDiv, newDiv);
+      newDiv.innerHTML += astronaut
+      oldDiv.innerHTML = ""
+      currentAstroPosition = newAstroPosition
+    }
+
+
 
   }
   if(el.id === 'down-event'){
-    console.log("DOWN")
+    console.log("DOWN", el, target)
         el.style.border = '2px dashed white';
 
-        gameBoard.innerHTML =
-      `
-      <div id="1" class="box"></div>
-      <div id="2" class="box"></div>
-      <div id="3" class="box"></div>
-      <div id="4" class="box"></div>
-      <div id="5" class="box"><img src="assets/astroman.png"></div>
-      <div id="6" class="box"><img class='shake-slow shake-constant'src="assets/alien.png"></div>
-      <div id="7" class="box"><img class='shake-slow shake-constant'src="assets/alien.png"></div>
-      <div id="8" class="box"></div>
-      <div id="9" class="box"></div>
-      <div id="10" class="box"><img src="assets/spaceship.png"></div>
-      <div id="11" class="box"><img class='shake-slow shake-constant' src="assets/alien.png"></div>
-      <div id="12" class="box"></div>
-      <div id="13" class="box"><img src="assets/alien.png"></div>
-      <div id="14" class="box"></div>
-      <div id="15" class="box"></div>
-      <div id="16" class="box"></div>
-      `
+        if(map5LegalMoves[currentAstroPosition].down === 0) //CONFIRMING IF LEGAL MOVE HERE
+        {
+          console.log("game over");
+                //GP TO DO: call lose modal *****
+        }
+        if(map5LegalMoves[currentAstroPosition].down === "win"){
+          console.log("you win");
+        }
+        else{
+          console.log("legal move");
+          let newAstroPosition = map5LegalMoves[currentAstroPosition].down
+          let newDiv = document.getElementById(`${newAstroPosition}`)
+          let oldDiv = document.getElementById(`${currentAstroPosition}`)
+          console.log(newAstroPosition, oldDiv, newDiv);
+          newDiv.innerHTML += astronaut
+          oldDiv.innerHTML = ""
+          currentAstroPosition = newAstroPosition
+        }
   }
   if(el.id === 'left-event'){
     console.log("LEFT")
     el.style.border = '2px dashed white';
-    gameBoard.innerHTML =
-  `
-  <div id="1" class="box"><img src="assets/astroman.png"></div>
-  <div id="2" class="box"></div>
-  <div id="3" class="box"></div>
-  <div id="4" class="box"></div>
-  <div id="5" class="box"></div>
-  <div id="6" class="box"><img class='shake-slow shake-constant' src="assets/alien.png"></div>
-  <div id="7" class="box"><img class='shake-slow shake-constant' src="assets/alien.png"></div>
-  <div id="8" class="box"></div>
-  <div id="9" class="box"></div>
-  <div id="10" class="box"><img src="assets/spaceship.png"></div>
-  <div id="11" class="box"><img class='shake-slow shake-constant' src="assets/alien.png"></div>
-  <div id="12" class="box"></div>
-  <div id="13" class="box"><img class='shake-slow shake-constant' src="assets/alien.png"></div>
-  <div id="14" class="box"></div>
-  <div id="15" class="box"></div>
-  <div id="16" class="box"></div>
-  `
+
+    if(map5LegalMoves[currentAstroPosition].left === 0)
+    //CONFIRMING IF LEGAL MOVE HERE
+    {
+      console.log("game over");
+            //GP TO DO: call lose modal *****
+    }
+    if(map5LegalMoves[currentAstroPosition].left === "win"){
+      console.log("you win");
+    }
+    else{
+      console.log("legal move");
+      let newAstroPosition = map5LegalMoves[currentAstroPosition].left
+      let newDiv = document.getElementById(`${newAstroPosition}`)
+      let oldDiv = document.getElementById(`${currentAstroPosition}`)
+      console.log(newAstroPosition, oldDiv, newDiv);
+      newDiv.innerHTML += astronaut
+      oldDiv.innerHTML = ""
+      currentAstroPosition = newAstroPosition
+    }
   }
 
   if(el.id === 'right-event'){
     console.log("RIGHT")
     el.style.border = '2px dashed white';
       document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
+
+
+          if(map5LegalMoves[currentAstroPosition].right === 0)
+          //CONFIRMING IF LEGAL MOVE HERE
+          {
+            console.log("game over");
+                  //GP TO DO: call lose modal *****
+          }
+          if(map5LegalMoves[currentAstroPosition].right === "win"){
+            console.log("you win");
+          }
+          else{
+            console.log("legal move");
+            let newAstroPosition = map5LegalMoves[currentAstroPosition].right
+            let newDiv = document.getElementById(`${newAstroPosition}`)
+            let oldDiv = document.getElementById(`${currentAstroPosition}`)
+            console.log(newAstroPosition, oldDiv, newDiv);
+            newDiv.innerHTML += astronaut
+            oldDiv.innerHTML = ""
+            currentAstroPosition = newAstroPosition
+          }
   }
 })
+//*************** END OF DRAG DROP LISTENER ***************//
 
-}) //end of DOMContentLoaded
+
+})
+//*************** END OF DOM EVENT LISTENER ***************//
 
 // function newGridLoop(array){
 //   for(let element of array){
@@ -221,56 +278,3 @@ function renderFinishHTML(element){
   <div id="${tileId}" class="box">${homebase}</div>
   `
 }
-
-
-
-const map4LegalMoves = {1: {up: null, down: 5, left: null, right: 2},
-              2: {up: null, down: null, left: 1, right: 3},
-              3: {up: null, down: null, left: 2, right: 4},
-              4: {up: null, down: 8, left: 3, right: null},
-              5: {up: 1, down: 9, left: null, right: null},
-              8: {up: 4, down: 12, left: null, right: null},
-              9: {up: 5, down: null, left: null, right: "win"},
-              12: {up: 8, down: 16, left: null, right: null},
-              14: {up: 10, down: null, left: null, right: 15},
-              15: {up: null, down: null, left: 14, right: 16},
-              16: {up: 12, down: null, left: 15, right: null}
-              }
-
-               // const one = map4LegalMoves[1]['up']
-
-const map5LegalMoves = {1: {up: null, down: 5, left: null, right: 2},
-              2: {up: null, down: null, left: 1, right: 3},
-              3: {up: null, down: 7, left: 2, right: null},
-              5: {up: 1, down: 9, left: null, right: null},
-              7: {up: 3, down: 11, left: null, right: "win"},
-              9: {up: 5, down: 13, left: null, right: null},
-              11: {up: 7, down: 15, left: null, right: null},
-              13: {up: 9, down: null, left: null, right: 14},
-              14: {up: null, down: null, left: 13, right: 15},
-              15: {up: 11, down: null, left: 14, right: null},
-              }
-
-  const map6LegalMoves = {1: {up: null, down: 5, left: null, right: 2},
-              2: {up: null, down: null, left: 1, right: 3},
-              3: {up: null, down: 7, left: 2, right: 4},
-              4: {up: null, down: 8, left: 3, right: null},
-              5: {up: 1, down: 9, left: null, right: null},
-              7: {up: 3, down: null, left: null, right: 8},
-              8: {up: 4, down: 12, left: 7, right: null},
-              9: {up: 5, down: 13, left: null, right: 10},
-              10: {up: null, down: null, left: 9, right: null},
-              12: {up: 8, down: 16, left: null, right: null},
-              13: {up: 9, down: null, left: null, right: null},
-              16: {up: 12, down: null, left: "win", right: null}
-              }//end of map6
-
-// console.log(map4LegalMoves[1]);
-
-      // function renderLeftMoves(){
-      //       leftMove.addEventListener('click', e=> {
-      //          gridBox
-      //       })
-      //       }
-      //
-      // renderLeftMoves()
