@@ -5,6 +5,9 @@ function introModal(){
 
   window.onload = function(){
     modal.style.display = "block"
+    // introMusic = new sound("intro.mp3")
+    // introMusic.play()
+    
   }
 
   span.onclick = function(){

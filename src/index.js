@@ -1,10 +1,14 @@
 //*************** GLOBAL VARIABLES ***************//
 
 let mapGrid = []
+
 let board = []
 var gameBoard = document.querySelector(".game-board")
 let currentAstroPosition
 let winPosition
+
+// const introMusic;
+// const astroMoveSound;
 //GP NOTE TO SELF: FIND A WAY TO ABSTRACT WHAT MAP WE ARE CURRENTLY PLAYING IN
 // console.log(currentAstroPosition, winPosition);
 
@@ -24,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const endPoint = 'http://localhost:3000/api/v1/maps'
 
-// introModal()
+introModal()
 
 //*************** BEGINNING OF FETCH ***************//
 fetch(endPoint)
@@ -69,19 +73,20 @@ fetch(endPoint)
 
  var drake = dragula([availableMoves, movesRemaining], {
     copy: true,
-  });
+  })
+
 
   dragula([movesRemaining], {
     removeOnSpill: true,
-  });
 
+  })
 
 
 //*************** END OF DRAG START LISTENER ***************//
 drake.on('drag', function(el,source) {
   if(el.id === "up-event"){
     // console.log("HEY", source, el)
-    document.getElementsByTagName('body')[0].style.backgroundColor = '#28a0ef';
+    // document.getElementsByTagName('body')[0].style.backgroundColor = '#28a0ef';
   }
 })
   //makes a copy of the dragged event
@@ -93,16 +98,18 @@ drake.on('drop', function(el, target){
 
   if(el.id === 'up-event'){
     console.log("DROP TARGET", el, target, winPosition)
-    el.style.border = '2px dashed white';
-    document.getElementsByTagName('body')[0].style.backgroundColor = 'white';
+
+    // document.getElementsByTagName('body')[0].style.backgroundColor = 'white';
     //compare the div id of the currentAstroPosition against the legal moves of the current map and asking 1st if the up move is an integer and if so, move the astronaut to the value of up
     if(map5LegalMoves[currentAstroPosition].up === 0)
     //CONFIRMING IF LEGAL MOVE HERE
     {
+      drake.remove()
       console.log("game over");
       //GP TO DO: call lose modal *****
     }
     if(map5LegalMoves[currentAstroPosition].up === "win"){
+      // drake.remove()
       console.log("you win");
     }
     else{
@@ -121,7 +128,7 @@ drake.on('drop', function(el, target){
   }
   if(el.id === 'down-event'){
     console.log("DOWN", el, target)
-        el.style.border = '2px dashed white';
+        // el.style.border = '2px dashed white';
 
         if(map5LegalMoves[currentAstroPosition].down === 0) //CONFIRMING IF LEGAL MOVE HERE
         {
@@ -144,7 +151,8 @@ drake.on('drop', function(el, target){
   }
   if(el.id === 'left-event'){
     console.log("LEFT")
-    el.style.border = '2px dashed white';
+    movePlaySound()
+    // el.style.border = '2px dashed white';
 
     if(map5LegalMoves[currentAstroPosition].left === 0)
     //CONFIRMING IF LEGAL MOVE HERE
@@ -169,9 +177,8 @@ drake.on('drop', function(el, target){
 
   if(el.id === 'right-event'){
     console.log("RIGHT")
-    el.style.border = '2px dashed white';
-      document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
-
+    movePlaySound()
+    // el.style.border = '2px dashed white';
 
           if(map5LegalMoves[currentAstroPosition].right === 0)
           //CONFIRMING IF LEGAL MOVE HERE
@@ -197,9 +204,15 @@ drake.on('drop', function(el, target){
 //*************** END OF DRAG DROP LISTENER ***************//
 
 
+
+
 })
 //*************** END OF DOM EVENT LISTENER ***************//
 
+function movePlaySound(){
+    var audio = new Audio("assets/astromove.wav");
+    audio.play();
+}
 // function newGridLoop(array){
 //   for(let element of array){
 //     if(element === 0){

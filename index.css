@@ -20,7 +20,7 @@
 
 body {
 	/* background: #1f253d; */
-  background: #eceef3;
+  background: #101115;
 
 }
 
@@ -56,9 +56,20 @@ div, h1, h2, p, a, span{
 	color: #fff;
 }
 	.scnd-font-color {
-		color: #9099b7;
+		color: 'white';
+
 	}
 
+  .questionmark {
+    font-family: 'Orbitron';
+    font-size: 250;
+
+    border-radius: 150px;
+    padding-top: -35;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 
 .clear {
 	clear: both;
@@ -176,39 +187,41 @@ font-family: 'Roboto Mono', monospace;
   cursor: pointer;
 }
 	/*********************************************** HEADER ***********************************************/
-	header {
-		/* height: 80px; */
+	.header {
+	border-radius: 15px;
+
 	}
 		.header-menu {
 			font-size: 17px;
 			line-height: 80px;
-      border-radius: 15px;
+      background-color: #070e15;
+      /* border-radius: 15px; */
 
 		}
 			.header-menu li {
 				position: center;
         vertical-align:middle;
     text-align:center;
-    border-radius: 15px;
+    /* border-radius: 15px; */
 
 			}
 				.header-menu-tab {
-            background-image: url('assets/gif.gif');
-
-					/* padding: 0 27px; */
+          background-image: url('assets/gif.gif');
 					display: block;
 					line-height: 70px;
           vertical-align:middle;
     text-align:center;
+    position:relative;
 					font-size: 25px;
 					-webkit-transition: background .3s;
 					transition: background .3s;
-          border-radius: 15px;
+          border-radius: 10px;
 				}
 .logo{
-        height: 80px;
-           width: 450px;
+        height: 100px;
+           width: 550px;
            padding-top: 25px;
+           /* border-radius: 15px; */
 }
 	/** CONTAINERS **/
 	.container {
@@ -221,8 +234,8 @@ background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Ch
 background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 			margin-bottom: 10px;
 			/* background: #394264; */
-			border-radius: 5px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+			border-radius: 15px;
+      box-shadow: 0 20px 20px rgba(0,0,0,0.19), 0 16px 16px rgba(0,0,0,0.23);
 		}
 
 
