@@ -53,12 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   //Diane's code (adjusting DOM content to reflect certain HTML/CSS assets)
-  // var astro = document.createElement("img")
-  // astro.setAttribute("src", "assets/astroman.png")
-  // document.querySelector('#astro').appendChild(astro)
-  //
-
   // dragula library
+
+//   el - the item that is being dropped
+//
+// target - the container on whichthe item is being dropped
+//
+// source - the container from which the item was dragged
+//
+// sibling - the item in the target container before which the item is being dropped, null if being dropped as last item
  // dragula([availableMoves, movesRemaining])
 
  var drake = dragula([availableMoves, movesRemaining], {

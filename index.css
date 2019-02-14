@@ -1,9 +1,5 @@
-/************************************ FONTS ************************************/
-
-
-@import url(https://fonts.googleapis.com/css?family=Orbitron);
-@import url(https://fonts.googleapis.com/css?family=Orbitron|Roboto+Mono);
-@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
+/************************************ FONTS *****************/
+@import url(https://fonts.googleapis.com/css?family=Orbitron|VT323|Roboto|Nova+Round);
 @import url(http://weloveiconfonts.com/api/?family=entypo|fontawesome|zocial);
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
@@ -12,7 +8,7 @@
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
 }
-/************************************* END FONTS *************************************/
+/**************************** END FONTS **********************/
 
 
 /************************************ BASIC LAYOUT ************************************/
@@ -51,8 +47,7 @@ a {
 	font-size: 20px;
 }
 img {
-
-  max-width: 100%;
+    max-width: 100%;
     max-height: 100%;
 }
 
@@ -64,46 +59,6 @@ div, h1, h2, p, a, span{
 		color: #9099b7;
 	}
 
-.input-container {
-	position: relative;
-}
-	input[type=text]{
-		width: 260px;
-		height: 50px;
-		margin-left: 20px;
-		margin-bottom: 20px;
-		padding-left: 45px;
-		background: #50597b;
-		color: #fff;
-		border: solid 1px #1f253d;
-		border-radius: 5px;
-	}
-		input[type=text]::-webkit-input-placeholder { /* WebKit browsers */
-	   		color: #fff;
-	   	}
-		input[type=text]:-moz-input-placeholder { /* Mozilla Firefox 4 to 18 */
-	   		color: #fff;
-	   	}
-		input[type=text]::-moz-input-placeholder { /* Mozilla Firefox 19+ */
-	   		color: #fff;
-	   	}
-		input[type=text]:-ms-input-placeholder { /* Internet Explorer 10+ */
-	   		color: #fff;
-	   	}
-	   	input[type=text]:focus {
-	   		outline: none; /* removes the default orange border when focus */
-	   		border: 1px solid #11a8ab;
-	   	}
-
-
-.horizontal-list {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-}
-	.horizontal-list li {
-		float: left;
-	}
 
 .clear {
 	clear: both;
@@ -120,9 +75,12 @@ div, h1, h2, p, a, span{
 }
 
 .title {
-
 	display: block;
-	line-height: 60px;
+	line-height: 50px;
+  font-size: 25px;
+  font-weight: bold;
+font-family: 'Orbitron';
+text-shadow: 0 0 10px #FFFFFF;
 	margin: 0;
 	text-align: center;
 	border-top-left-radius: 5px;
@@ -138,7 +96,7 @@ div, h1, h2, p, a, span{
 	font-weight: 700;
 	text-align: center;
 	margin: 0 auto;
-	border-radius: 5px;
+	border-radius: 15px;
 	-webkit-transition: background .3s;
 	transition: background .3s;
 }
@@ -170,6 +128,7 @@ font-family: 'Roboto Mono', monospace;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4);
+
 }
 
 /* content within the modal */
@@ -189,6 +148,7 @@ font-family: 'Roboto Mono', monospace;
   -webkit-animation-duration: 0.8s;
   animation-name: animatetop;
   animation-duration: 0.8s
+
 }
 
 /* Add Animation */
@@ -279,6 +239,7 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 				.menu-box-menu .icon {
 					display: inline-block;
 					vertical-align: top;
+          color: #fff;
 					width: 28px;
 					margin-left: 20px;
 					margin-right: 15px;
@@ -290,37 +251,23 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 					position: relative;
 				}
 				.menu-box-tab {
-					line-height: 60px;
+					line-height: 50px;
+
+          /* font-family: 'orbitron';
+          font-size: 15px; */
 					display: block;
-					/* border-bottom: 1px solid #1f253d; */
+					border: 2px solid #1f253d;
+          background: #50597b;
 					-webkit-transition: background .2s;
 					transition: background .2s;
-
            cursor: pointer;
 				}
 					.menu-box-tab:hover {
 						background: #50597b;
-						border-top: 1px solid #1f253d;
+						border-top: 2px solid #1f253d;
 						text-decoration: none;
+            /* border-radius: 25px; */
 					}
-/*
- Drag and drop */
-      .hovered {
-        border: dotted 1px black;
-      }
-
-      .held {
-        border: solid 1px black;
-        /* background-color: black; */
-      }
-
-      .invisible {
-        display: none;
-      }
-					.menu-box-tab:hover .icon {
-						color: #fff;
-					}
-
 
 
 			.second-chart-block {
@@ -526,7 +473,7 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
    z-index: 9999 !important;
    opacity: 1;
    -webkit-transform: rotate(5deg);
-   font-family: 'Roboto Mono';
+   font-family: 'Orbitron';
  transform: rotate(5deg);
  }
  .gu-hide {
@@ -543,29 +490,3 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
    filter: alpha(opacity=20);
  }
-
-
-
- .animated {
-             -webkit-animation-duration: 20s;
-             animation-duration: 20s;
-             -webkit-animation-fill-mode: both;
-             animation-fill-mode: both;
-          }
-
-          @-webkit-keyframes shake {
-             0%, 100% {-webkit-transform: translateX(0);}
-             10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
-             20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
-          }
-
-          @keyframes shake {
-             0%, 100% {transform: translateX(0);}
-             10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
-             20%, 40%, 60%, 80% {transform: translateX(10px);}
-          }
-
-          .shake {
-             -webkit-animation-name: shake;
-             animation-name: shake;
-          }

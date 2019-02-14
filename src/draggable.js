@@ -1,5 +1,37 @@
-
-
+// 
+// let dragAndDrop = {
+//
+//     limit: 6, //move allowance
+//     count: 0,
+//
+//     init: function () {
+//         this.dragula();
+//         this.eventListeners();
+//     },
+//
+//     eventListeners: function () {
+//         this.dragula.on('drop', this.dropped.bind(this));
+//     },
+//
+//     dragula: function () {
+//         this.dragula = dragula([document.querySelector('#b1'), document.querySelector('#b2')],
+//         {
+//             moves: this.canMove.bind(this),
+//             copy: true,
+//         });
+//     },
+//
+//     canMove: function () {
+//         return this.count < this.limit;
+//     },
+//
+//     dropped: function (el) {
+//         this.count++;
+//     }
+//
+// }
+//
+// dragAndDrop.init();
 // class App {
 //   static init() {
 //
@@ -49,12 +81,3 @@
 // }
 //
 // document.addEventListener("DOMContentLoaded", App.init)
-
-
-
-// // Scrollable area
-// var element = document.getElementById("boards"); // Count Boards
-// var numberOfBoards = element.getElementsByClassName('board').length;
-// var boardsWidth = numberOfBoards*316 // Width of all Boards
-// console.log(boardsWidth);
-// element.style.width = boardsWidth+"px"; // set Width
