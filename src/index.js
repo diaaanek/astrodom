@@ -73,9 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 drake.on('drag', function(el,source) {
+  if(el.id === 'up-event'){
   console.log("HEY", source, el)
   document.getElementsByTagName('body')[0].style.backgroundColor = '#28a0ef';
-
+}
 }); // end drag event listener
 
 drake.on('drop', function(el, target){
