@@ -192,7 +192,7 @@ drake.on('drop', function(el, target){
     //*************** LEFT MOVEMENT ***************//
   if(el.id === 'left-event'){
     // console.log("LEFT")
-    movePlaySound()
+
     if(legalMoves[level][currentAstroPosition].left === 0)
     //CONFIRMING IF LEGAL MOVE HERE
     {
@@ -225,9 +225,6 @@ drake.on('drop', function(el, target){
   //*************** RIGHT MOVEMENT ***************//
   if(el.id === 'right-event'){
     console.log("RIGHT")
-    movePlaySound()
-    // el.style.border = '2px dashed white';
-
           if(legalMoves[level][currentAstroPosition].right === 0)
           //CONFIRMING IF LEGAL MOVE HERE
           {
@@ -265,10 +262,10 @@ drake.on('drop', function(el, target){
 })
 //*************** END OF DOM EVENT LISTENER ***************//
 
-function movePlaySound(){
-    var audio = new Audio("assets/astromove.wav");
-    audio.play();
-}
+// function movePlaySound(){
+//     var audio = new Audio("assets/astromove.wav");
+//     audio.play();
+// }
 // function newGridLoop(array){
 //   for(let element of array){
 //     if(element === 0){
