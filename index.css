@@ -215,6 +215,20 @@ font-family: 'Roboto Mono', monospace;
 
 }
 
+.hovermodal {
+  position: relative;
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  text-align: center;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2), 0 12px 0px 0 rgba(255, 255, 255, 0.19);
+}
+
 /* Add Animation */
 @-webkit-keyframes animatetop {
   from {top:-300px; opacity:0}
