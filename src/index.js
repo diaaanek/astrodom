@@ -2,7 +2,7 @@
 
 let mapGrid = []
 let tileId = 0
-let level = 1
+let level = 0
 // let level2 = mapGrid[1].layout
 // foreachLoopTrial(level2)
 // level 3: mapGrid[2].layout
@@ -11,6 +11,8 @@ var gameBoard = document.querySelector(".game-board")
 let currentAstroPosition
 let winPosition
 const loseModal = document.getElementById("lose-modal")
+const questionmark = document.querySelector(".questionmark")
+const instructionsModal = document.getElementById("instructions-modal")
 
 let currentMap
 
@@ -69,8 +71,16 @@ fetch(endPoint)
   })
   //*************** END OF FETCH ***************//
 
+  //*************** toggle hover modal **************//
+  //GP TO DO: FIX THE ANIMATION SO IT DOESNT SPAZZ WHEN YOU HOVER OVER THE QUESTION MARK 
+  questionmark.onmouseover = function(){
+    instructionsModal.style.display = "block"
+  }
+  questionmark.onmouseout = function(){
+    instructionsModal.style.display = "none"
+  }
 
-
+  //*************** toggle hover modal **************//
 
   //Diane's code (adjusting DOM content to reflect certain HTML/CSS assets)
 // dragula library
@@ -99,8 +109,6 @@ fetch(endPoint)
 //*************** END OF DRAG START LISTENER ***************//
 drake.on('drag', function(el,source) {
   if(el.id === "up-event"){
-    // console.log("HEY", source, el)
-    // document.getElementsByTagName('body')[0].style.backgroundColor = '#28a0ef';
   }
 })
   //makes a copy of the dragged event
@@ -119,28 +127,31 @@ drake.on('drop', function(el, target){
 
     //legalMoves[legal] *** PAY ATTENTION TO ME WHEN YOU NEED TO ABSTRACT THE LEVEL RULES ***
 
-    if(map5LegalMoves[currentAstroPosition].up === 0)
+    if(legalMoves[level][currentAstroPosition].up === 0)
     //CONFIRMING IF LEGAL MOVE HERE
     {
       drake.remove()
       console.log("game over");
       loseModal.style.display = "block"
     }
-    if(map5LegalMoves[currentAstroPosition].up === "win"){
-      // drake.remove()
-      // console.log("you win");
-      level++
+    if(legalMoves[level][currentAstroPosition].up === "win"){
+      drake.remove()
+      console.log("you win");
+
       winModal()
       // legal++
       // console.log("you win");
     }
+    if(legalMoves[level][currentAstroPosition].up === "finalwin"){
+      console.log("won the whole game");
+    }
     //
     else{
       console.log("legal move");
-      let newAstroPosition = map5LegalMoves[currentAstroPosition].up
+      let newAstroPosition = legalMoves[level][currentAstroPosition].up
       let newDiv = document.getElementById(`${newAstroPosition}`)
       let oldDiv = document.getElementById(`${currentAstroPosition}`)
-      console.log(newAstroPosition, oldDiv, newDiv);
+      // console.log(newAstroPosition, oldDiv, newDiv);
       newDiv.innerHTML += astronaut
       oldDiv.innerHTML = ""
       currentAstroPosition = newAstroPosition
@@ -151,23 +162,27 @@ drake.on('drop', function(el, target){
   //*************** DOWN MOVEMENT ***************//
   if(el.id === 'down-event'){
     // console.log("DOWN", el, target)
-        if(`${currentMap}LegalMoves`[currentAstroPosition].down === 0) //CONFIRMING IF LEGAL MOVE HERE
+        if(legalMoves[level][currentAstroPosition].down === 0) //CONFIRMING IF LEGAL MOVE HERE
         {
           console.log("game over");
           loseModal.style.display = "block"
         }
-        if(map5LegalMoves[currentAstroPosition].down === "win"){
-          // console.log("you win");
-          level++
+        if(legalMoves[level][currentAstroPosition].down === "win"){
+          console.log("you win");
+          drake.remove()
+
           winModal()
 
         }
+        if(legalMoves[level][currentAstroPosition].down === "finalwin"){
+          console.log("won the whole game");
+        }
         else{
           console.log("legal move");
-          let newAstroPosition = map5LegalMoves[currentAstroPosition].down
+          let newAstroPosition = legalMoves[level][currentAstroPosition].down
           let newDiv = document.getElementById(`${newAstroPosition}`)
           let oldDiv = document.getElementById(`${currentAstroPosition}`)
-          console.log(newAstroPosition, oldDiv, newDiv);
+          // console.log(newAstroPosition, oldDiv, newDiv);
           newDiv.innerHTML += astronaut
           oldDiv.innerHTML = ""
           currentAstroPosition = newAstroPosition
@@ -179,21 +194,24 @@ drake.on('drop', function(el, target){
   if(el.id === 'left-event'){
     // console.log("LEFT")
     movePlaySound()
-    if(map5LegalMoves[currentAstroPosition].left === 0)
+    if(legalMoves[level][currentAstroPosition].left === 0)
     //CONFIRMING IF LEGAL MOVE HERE
     {
       console.log("game over");
       loseModal.style.display = "block"
     }
-    if(map5LegalMoves[currentAstroPosition].left === "win"){
+    if(legalMoves[level][currentAstroPosition].left === "win"){
       console.log("you win");
-      // console.log("you win");
-      level++
+      drake.remove()
+
       winModal()
+    }
+    if(legalMoves[level][currentAstroPosition].left === "finalwin"){
+      console.log("won the whole game");
     }
     else{
       console.log("legal move");
-      let newAstroPosition = map5LegalMoves[currentAstroPosition].left
+      let newAstroPosition = legalMoves[level][currentAstroPosition].left
       let newDiv = document.getElementById(`${newAstroPosition}`)
       let oldDiv = document.getElementById(`${currentAstroPosition}`)
       // console.log(newAstroPosition, oldDiv, newDiv);
@@ -210,20 +228,23 @@ drake.on('drop', function(el, target){
     movePlaySound()
     // el.style.border = '2px dashed white';
 
-          if(map5LegalMoves[currentAstroPosition].right === 0)
+          if(legalMoves[level][currentAstroPosition].right === 0)
           //CONFIRMING IF LEGAL MOVE HERE
           {
             console.log("game over");
             loseModal.style.display = "block"
           }
-          if(map5LegalMoves[currentAstroPosition].right === "win"){
-            // console.log("you win");
-            level++
+          if(legalMoves[level][currentAstroPosition].right === "win"){
+            console.log("you win");
+            drake.remove()
             winModal()
+          }
+          if(legalMoves[level][currentAstroPosition].right === "finalwin"){
+            console.log("won the whole game");
           }
           else{
             console.log("legal move");
-            let newAstroPosition = map5LegalMoves[currentAstroPosition].right
+            let newAstroPosition = legalMoves[level][currentAstroPosition].right
             let newDiv = document.getElementById(`${newAstroPosition}`)
             let oldDiv = document.getElementById(`${currentAstroPosition}`)
             // console.log(newAstroPosition, oldDiv, newDiv);
