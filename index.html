@@ -1,15 +1,15 @@
- <!DOCTYPE html>
- <html lang="en" >
+<html lang="en" >
 
- <head>
-   <meta charset="UTF-8">
-   <title>ASTRODOM</title>
+<head>
+<meta charset="UTF-8">
+<title>ASTRODOM</title>
 
-   <link rel="icon" href="assets/favicon.png"/>
-   <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css"> -->
- </head>
+  <link rel="icon" href="assets/favicon.png"/>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css">
+
+</head>
 
  <body>
   <div class="main-container">
@@ -18,7 +18,7 @@
    <header class="block">
 <!--  LOGO -->
      <a class="header-menu-tab">
-           <div class= "questionmark"> ? </div>
+           <div class= "questionmark hvr-grow-shadow"> ❓</div>
        <img class="logo hvr-buzz-out" src="assets/ASTRODOM.png"></a>
 
    </header>
@@ -89,8 +89,8 @@
   <a id="up-event" class="menu-box-tab">
   <span class="icon fontawesome-arrow-up scnd-font-color"></span>  UP </a>
 
-  <a id="down-event" class="menu-box-tab">
-  <span class="icon fontawesome-arrow-down scnd-font-color noselect"></span>  DOWN </a>
+  <a id="down-event" class="menu-box-tab ">
+  <span class="icon fontawesome-arrow-down scnd-font-color"></span> DOWN </a>
 
   <a id="left-event" class="menu-box-tab">
   <span class="icon fontawesome-arrow-left scnd-font-color"></span>  LEFT </a>
@@ -119,22 +119,12 @@
 
   <div class="second-chart-block block" dragula="COPYABLE" id="b2">  second CHART BLOCK (LEFT-CONTAINER) -->
 <!-- ********* ADDING TEST CODE -->
-    <div id="boards">
-      <!-- <div class="board" id="board1">
-         <header>Available Moves</header> -->
-      <!-- </div>  -->
-
-
-    </div>
-<!--     boards  -->
-
+    <div id="boards"></div>
 <!-- END TESSSST CODE -->
-
     </div>
     <!-- end seconf chart block -->
 </div>
               <!-- END LEFT-CONTAINER -->
-
 
              <!-- MIDDLE-CONTAINER -->
              <div class="middle-container container">
@@ -156,12 +146,7 @@
     <script src="src/modals.js" charset="utf-8"></script>
     <script src="src/moves.js" charset="utf-8"></script>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/dragula.min.js'></script>
-
-<!-- or from surge.sh -->
-<link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css">
-
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.js'</script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
 
     <embed src="intro.mp3" width="180" height="90" loop="false" autostart="false" hidden="true" />
      </body>

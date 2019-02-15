@@ -7,7 +7,7 @@ function introModal(){
     modal.style.display = "block"
     // introMusic = new sound("intro.mp3")
     // introMusic.play()
-    
+
   }
 
   span.onclick = function(){
@@ -23,6 +23,7 @@ function introModal(){
 }
 
 function winModal(){
+  const movesRemaining = document.querySelector("#b2")
   const winModal = document.getElementById("win-modal")
   const winBtn = document.getElementById("win-btn")
 
@@ -38,7 +39,8 @@ function winModal(){
     console.log(tileId);
     gameBoard.innerHTML = ""
     foreachLoopTrial(newMap)
-    //DIANE YOU SHOULD RESET THE MOVES REMAINING CONTAINER TO BE EMPTY HERE // 
+    movesRemaining.innerHTML = `<h2 class="title">MOVES REMAINING</h2>`
+    //DIANE YOU SHOULD RESET THE MOVES REMAINING CONTAINER TO BE EMPTY HERE //
     winModal.style.display = "none"
 
     // gameBoard.innerHTML = foreachLoopTrial(newMap)

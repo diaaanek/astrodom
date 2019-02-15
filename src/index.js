@@ -83,7 +83,6 @@ fetch(endPoint)
 //
 // sibling - the item in the target container before which the item is being dropped, null if being dropped as last item
 
-// dragula([availableMoves, movesRemaining])
 
  var drake = dragula([availableMoves, movesRemaining], {
     copy: true,
@@ -95,12 +94,10 @@ fetch(endPoint)
 
   })
 
-
 //*************** END OF DRAG START LISTENER ***************//
 drake.on('drag', function(el,source) {
   if(el.id === "up-event"){
-    // console.log("HEY", source, el)
-    // document.getElementsByTagName('body')[0].style.backgroundColor = '#28a0ef';
+    
   }
 })
   //makes a copy of the dragged event
@@ -126,16 +123,16 @@ drake.on('drop', function(el, target){
       console.log("game over");
       loseModal.style.display = "block"
     }
-    if(map5LegalMoves[currentAstroPosition].up === "win"){
-      // drake.remove()
-      // console.log("you win");
+    if(map5LegalMoves[currentAstroPosition].up === "win")
+    {
+      drake.remove()
       level++
       winModal()
       // legal++
       // console.log("you win");
     }
     //
-    else{
+    else {
       console.log("legal move");
       let newAstroPosition = map5LegalMoves[currentAstroPosition].up
       let newDiv = document.getElementById(`${newAstroPosition}`)
@@ -153,11 +150,13 @@ drake.on('drop', function(el, target){
     // console.log("DOWN", el, target)
         if(`${currentMap}LegalMoves`[currentAstroPosition].down === 0) //CONFIRMING IF LEGAL MOVE HERE
         {
+          drake.remove()
           console.log("game over");
           loseModal.style.display = "block"
         }
         if(map5LegalMoves[currentAstroPosition].down === "win"){
           // console.log("you win");
+          drake.remove()
           level++
           winModal()
 
@@ -182,6 +181,7 @@ drake.on('drop', function(el, target){
     if(map5LegalMoves[currentAstroPosition].left === 0)
     //CONFIRMING IF LEGAL MOVE HERE
     {
+      drake.remove()
       console.log("game over");
       loseModal.style.display = "block"
     }
@@ -207,16 +207,16 @@ drake.on('drop', function(el, target){
   //*************** RIGHT MOVEMENT ***************//
   if(el.id === 'right-event'){
     console.log("RIGHT")
-    movePlaySound()
-    // el.style.border = '2px dashed white';
-
+      movePlaySound()
           if(map5LegalMoves[currentAstroPosition].right === 0)
           //CONFIRMING IF LEGAL MOVE HERE
           {
+            drake.remove()
             console.log("game over");
             loseModal.style.display = "block"
           }
           if(map5LegalMoves[currentAstroPosition].right === "win"){
+            drake.remove()
             // console.log("you win");
             level++
             winModal()
