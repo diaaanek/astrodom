@@ -1,131 +1,90 @@
 //*************** GLOBAL VARIABLES ***************//
+// LOCAL VARIABLES //
+let mapGrid = [] // WILL HOLD ALL GAME DATA //
+let tileId = 0 // TILE STARTS AT ZERO FOR RERENDER OF GAME GRID //
+let level = 0 // LEVEL STARTS AT 0 FOR BEGINNING OF GAME PLAY //
+let currentMap // WILL BE SET TO CURRENT MAP FROM MAPGRID //
+let newMap // WILL BE SET TO SUBSEQUENT MAP FROM CURRENT GRID //
+let retryMap // WILL BE VALUE OF CURRENT MAP FOR RERENDERING THE GAME GRID //
+let board = [] //not sure what this is tbd //
+let currentAstroPosition //CURRENT POSITION OF ASTRONAUT PIECE //
+let winPosition // CURRENT POSITION OF SPACESHIP //
 
-let mapGrid = []
-let tileId = 0
-let level = 0
-let newMap
-let retryMap
-// let level2 = mapGrid[1].layout
-// foreachLoopTrial(level2)
-// level 3: mapGrid[2].layout
-let board = []
+// FOUND DOM ELEMENTS //
 var gameBoard = document.querySelector(".game-board")
-let currentAstroPosition
-let winPosition
-// const loseModal = document.getElementById("lose-modal")
 const questionmark = document.querySelector(".questionmark")
 const instructionsModal = document.getElementById("instructions-modal")
 const closeInstructionModal = document.getElementById("closeIntructionsModal")
-
-let currentMap
-
-// console.log(currentAstroPosition, winPosition);
-
-const astronaut = `<img id="astronaut" src="assets/astroman.png">`
-const alien = `<img class='shake-slow shake-constant' src="assets/alien.png">`
-const homebase = `<img id="spaceship" src="assets/spaceship.png">`
-
-
 const availableMoves = document.querySelector("#b1")
 const movesRemaining = document.querySelector("#b2")
 
-//*************** GLOBAL VARIABLES ***************//
+// GAME PIECES
+const astronaut = `<img id="astronaut" src="assets/astroman.png">` //ASTRONAUT PIECE//
+const alien = `<img class='shake-slow shake-constant' src="assets/alien.png">` //ALIEN PIECE//
+const homebase = `<img id="spaceship" src="assets/spaceship.png">` //SPACESHIP PIECE//
 
+//*************** GLOBAL VARIABLES ***************//
 
 //*************** BEGINNING OF DOM EVENT LISTENER ***************//
 document.addEventListener("DOMContentLoaded", () => {
 
-const endPoint = 'http://localhost:3000/api/v1/maps'
-
-introModal()
-
+  const endPoint = 'http://localhost:3000/api/v1/maps' // LOCAL SERVER //
+  introModal() // CALL THE INTRODUCTION TO THE GAME MODAL //
 
 //*************** BEGINNING OF FETCH ***************//
-fetch(endPoint)
-  .then(response => response.json())
-  .then(data => {
-    mapGrid = data
+  fetch(endPoint)
+    .then(response => response.json())
+    .then(data => {
+      mapGrid = data //SETTING LOCAL VARIABLE TO HOLD ALL DATA //
+      currentMap = mapGrid[level].layout //GRABBING THE MAP THAT WE WANT BASED ON VALUE OF LEVEL //
+      // console.log(currentMap)
+      foreachLoopTrial(currentMap) // FUNCTION TO RENDER THE MAP //
 
-    // let nineSquare = mapGrid.filter( map => map.size === 9 )
-    // let map1 = nineSquare[2].layout
-    // let sixteenSquare = mapGrid.filter( map => map.size === 16)
-    // let map4 = sixteenSquare[0].layout
-    currentMap = mapGrid[level].layout
-    // console.log(map4)
-    // let map5 = sixteenSquare[1].layout
-    // console.log(map5)
-    // let map6 = sixteenSquare[2].layout
-
-
-    console.log(currentMap)
-     // sixteenSquare[parseInt(`${level}`)].layout
-
-    // console.log(currentMap)
-    // let twentyFiveSquare = mapGrid.filter( map => map.size === 25)
-    // let map7 = twentyFiveSquare[0].layout
-    // console.log(mapGrid);
-    // console.log(nineSquare);
-    // console.log(map4)
-    foreachLoopTrial(currentMap) // FUNCTION TO RENDER THE MAP
-
-    currentAstroPosition = parseInt(document.getElementById("astronaut").parentElement.id)
-    winPosition = parseInt(document.getElementById("spaceship").parentElement.id)
-    // console.log(currentAstroPosition, winPosition);
-  })
+      currentAstroPosition = parseInt(document.getElementById("astronaut").parentElement.id)
+      winPosition = parseInt(document.getElementById("spaceship").parentElement.id)
+      // console.log(currentAstroPosition, winPosition);
+    })
   //*************** END OF FETCH ***************//
 
-  //*************** toggle hover modal **************//
+  //*************** INSTRUCTIONS MODAL **************//
   questionmark.addEventListener("mouseover", function(e){
     instructionsModal.style.display = "block"
-  })
+  }) // THIS TOGGLES THE INSTRUCTIONS MODAL ON //
 
   closeInstructionModal.addEventListener("click", function(e){
     // console.log('click');
     instructionsModal.style.display = "none"
-  })
+  }) // THIS TOGGLES THE INSTRUCTIONS MODAL OFF //
 
-  //*************** toggle hover modal **************//
+  //*************** INSTRUCTIONS MODAL **************//
 
-  //Diane's code (adjusting DOM content to reflect certain HTML/CSS assets)
-// dragula library
-
-// el - the item that is being dropped
-//
-// target - the container on which the item is being dropped
-//
-// source - the container from which the item was dragged
-//
-// sibling - the item in the target container before which the item is being dropped, null if being dropped as last item
-
-
- var drake = dragula([availableMoves, movesRemaining], {
+  //*************** DRAGULA *************** //
+  var drake = dragula([availableMoves, movesRemaining], {
     copy: true,
-  })
+  }) //SETTING THE CONTAINERS FOR DRAGULA//
 
 
   dragula([movesRemaining], {
     removeOnSpill: true,
+  }) // MAKING COPIES OF MOVES WHEN THEY MOVE OUT OF AVAIL MOVES CONTAINER//
 
-  })
+//*************** BEGINNING OF DRAG START LISTENER ***************//
+  // drake.on('drag', function(el,source) {
+  //   if(el.id === "up-event"){
+  //   }
+  // }) //EVENTUALLY THIS WILL RESTRICT MOVES//
 
-//*************** END OF DRAG START LISTENER ***************//
-drake.on('drag', function(el,source) {
-  if(el.id === "up-event"){
-  }
-})
-  //makes a copy of the dragged event
 //*************** END OF DRAG START LISTENER ***************//
 
 //*************** BEGINNING OF DRAG DROP LISTENER ***************//
-// let legal = 0
-// let legal = 1
-drake.on('drop', function(el, target){
+
+  drake.on('drop', function(el, target){
+    //compare the div id of the currentAstroPosition against the legal moves of the current map and asking 1st if the up move is an integer and if so, move the astronaut to the value of up
 
 //*************** UP MOVEMENT ***************//
   if(el.id === 'up-event'){
     // console.log("DROP TARGET", el, target, winPosition)
 
-    //compare the div id of the currentAstroPosition against the legal moves of the current map and asking 1st if the up move is an integer and if so, move the astronaut to the value of up
 
     //legalMoves[legal] *** PAY ATTENTION TO ME WHEN YOU NEED TO ABSTRACT THE LEVEL RULES ***
 

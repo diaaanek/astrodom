@@ -4,12 +4,6 @@ function introModal(){
 
   window.onload = function(){
     modal.style.display = "block"
-<<<<<<< HEAD
-
-=======
-    // introMusic = new sound("intro.mp3")
-    // introMusic.play()
->>>>>>> ghostlevel
   }
 
   span.onclick = function(){
