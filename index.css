@@ -54,7 +54,9 @@ a {
 text-shadow: 0 0 5px #FFFFFF;
 }
 
-#down-event{
+.welcomelogo{
+width: 500px;
+height: 100px;
 
 }
 img {
@@ -129,10 +131,30 @@ div, h1, h2, p, a, span{
 	clear: both;
 }
 
-.astronaut{
-width: 100%;
-height: 100%;
+#astronaut:hover{
+  -webkit-transform: rotate(180deg); /* Safari */
+  transform: rotate(180deg);
+            behavior:url(-ms-transform.htc);
+            /* Firefox */
+            -moz-transform:rotate(45deg);
+            /* Safari and Chrome */
+            -webkit-transform:rotate(45deg);
+            /* Opera */
+            -o-transform:rotate(45deg);
+            /* IE9 */
+            -ms-transform:rotate(45deg);
+            /* IE6,IE7 */}
+
+#astronaut{
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  -webkit-transition: width 3s, height 3s, -webkit-transform 3s; /* Safari */
+transition: width 3s, height 3s, transform 3s;
+
 }
+
 .gif {
   width: 50%;
   height: auto;
@@ -280,7 +302,7 @@ font-family: 'Roboto Mono', monospace;
 
 			}
 				.header-menu-tab {
-          /* background-image: url('assets/gif.gif'); */
+          background-image: url('assets/gif.gif');
           margin-top: 2px;
 					display: block;
 					line-height: 70px;
@@ -356,7 +378,6 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 				}
 				.menu-box-tab {
 					line-height: 50px;
-
           /* font-family: 'orbitron';
           font-size: 15px; */
 					display: block;
@@ -486,14 +507,14 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
           .hvr-buzz-out {
             /* display: inline-block;
             vertical-align: middle; */
-            -webkit-transform: perspective(1px) translateZ(0);
+            -webkit-transform: perspective(2px) translateZ(0);
             box-shadow: 0 0 1px rgba(0, 0, 0, 0);
           }
           .hvr-buzz-out:hover, .hvr-buzz-out:focus, .hvr-buzz-out:active {
             -webkit-animation-name: hvr-buzz-out;
             animation-name: hvr-buzz-out;
-            -webkit-animation-duration: 0.75s;
-            animation-duration: 0.75s;
+            -webkit-animation-duration: 2s;
+            animation-duration: 2;
             -webkit-animation-timing-function: linear;
             animation-timing-function: linear;
             -webkit-animation-iteration-count: 1;
@@ -521,20 +542,6 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
  /*   background-color:lightgray; */
    border-radius:3px;
    box-shadow:1px 1px 1px rgba(0,0,0,.2);}
-
- /* .board header {
-   float:left;
-   width:100%;
-   padding:.5em;
-   background-color:lightgray;
-   border-radius:3px 3px 0 0;} */
-
- /* #board1 header {
-   background-color:#BC3425;
-   color:white}
- #board2 header {
-   background-color:#92549E;
-   color:white} */
 
  .cards {
    list-style-type:none;
