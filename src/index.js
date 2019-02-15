@@ -82,47 +82,40 @@ document.addEventListener("DOMContentLoaded", () => {
     //compare the div id of the currentAstroPosition against the legal moves of the current map and asking 1st if the up move is an integer and if so, move the astronaut to the value of up
 
 //*************** UP MOVEMENT ***************//
-  if(el.id === 'up-event'){
-    // console.log("DROP TARGET", el, target, winPosition)
-
-
-    //legalMoves[legal] *** PAY ATTENTION TO ME WHEN YOU NEED TO ABSTRACT THE LEVEL RULES ***
+  if(el.id === 'up-event'){ //THIS IS ALL OF THE CODE FOR AN UP MOVE//
 
     if(legalMoves[level][currentAstroPosition].up === 0)
     //CONFIRMING IF LEGAL MOVE HERE
     {
-      drake.remove()
+      drake.remove()//REMOVES ALL THE MOVES FROM THE PLAYED MOVES CONTAINER//
       console.log("game over");
-      loseModal()
+      loseModal()//CALL THE LOSE MODAL
     }
     if(legalMoves[level][currentAstroPosition].up === "win"){
-      drake.remove()
+      drake.remove()//REMOVES ALL THE MOVES FROM THE PLAYED MOVES CONTAINER//
       console.log("you win");
-      level++
+      level++ //INCREMENT THE LEVEL SO WIN MODAL CAN RENDER A NEW MAP
       winModal()
-      // legal++
-      // console.log("you win");
     }
     // if(legalMoves[level][currentAstroPosition].up === "finalwin"){
     //   console.log("won the whole game");
-    // }
+    // } // EVENTUALLY THIS WILL BE IMPLEMENTED AT THE END OF THE ENTIRE GAME PLAY
     //
-    else {
+    else { //FOR ANY MOVE THAT IS NOT ILLEGAL OR A WIN MOVE...//
       console.log("legal move");
-      let newAstroPosition = legalMoves[level][currentAstroPosition].up
-      let newDiv = document.getElementById(`${newAstroPosition}`)
-      let oldDiv = document.getElementById(`${currentAstroPosition}`)
+      let newAstroPosition = legalMoves[level][currentAstroPosition].up //DETERMINE THE NEW POSITION OF THE ASTRONAUT BASED ON THE LEGAL MOVES LOGIC //
+      let newDiv = document.getElementById(`${newAstroPosition}`) //GRAB THE NEW DIV THAT THE ASTRONAUT WILL BE MOVING INTO//
+      let oldDiv = document.getElementById(`${currentAstroPosition}`)//GRAB THE OLD DIV THAT THE ASTRONAUT IS MOVING INTO//
       // console.log(newAstroPosition, oldDiv, newDiv);
-      newDiv.innerHTML += astronaut
-      oldDiv.innerHTML = ""
-      currentAstroPosition = newAstroPosition
+      newDiv.innerHTML += astronaut // ADD THE ASTRONAUT TO THE NEW DIV
+      oldDiv.innerHTML = "" // REMOVE THE ASTRONAUT FROM THE OLD DIV
+      currentAstroPosition = newAstroPosition //UPDATE THE LOCAL VARIABLE
     }
   }
   //*************** UP MOVEMENT ***************//
 
   //*************** DOWN MOVEMENT ***************//
   if(el.id === 'down-event'){
-    // console.log("DOWN", el, target)
         if(legalMoves[level][currentAstroPosition].down === 0) //CONFIRMING IF LEGAL MOVE HERE
         {
           drake.remove()
@@ -150,11 +143,10 @@ document.addEventListener("DOMContentLoaded", () => {
           currentAstroPosition = newAstroPosition
         }
   }
-    //*************** DOWN MOVEMENT ***************//
+  //*************** DOWN MOVEMENT ***************//
 
-    //*************** LEFT MOVEMENT ***************//
+  //*************** LEFT MOVEMENT ***************//
   if(el.id === 'left-event'){
-    // console.log("LEFT")
 
     if(legalMoves[level][currentAstroPosition].left === 0)
     //CONFIRMING IF LEGAL MOVE HERE
@@ -177,7 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let newAstroPosition = legalMoves[level][currentAstroPosition].left
       let newDiv = document.getElementById(`${newAstroPosition}`)
       let oldDiv = document.getElementById(`${currentAstroPosition}`)
-      // console.log(newAstroPosition, oldDiv, newDiv);
       newDiv.innerHTML += astronaut
       oldDiv.innerHTML = ""
       currentAstroPosition = newAstroPosition
@@ -187,74 +178,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //*************** RIGHT MOVEMENT ***************//
   if(el.id === 'right-event'){
-    console.log("RIGHT")
-          if(legalMoves[level][currentAstroPosition].right === 0)
-          //CONFIRMING IF LEGAL MOVE HERE
-          {
-            drake.remove()
-            console.log("game over");
-            loseModal()
-          }
-          if(legalMoves[level][currentAstroPosition].right === "win"){
-            console.log("you win");
-            drake.remove()
-            level++
-            winModal()
-          }
-          // if(legalMoves[level][currentAstroPosition].right === "finalwin"){
-          //   console.log("won the whole game");
-          // }
-          else{
-            console.log("legal move");
-            let newAstroPosition = legalMoves[level][currentAstroPosition].right
-            let newDiv = document.getElementById(`${newAstroPosition}`)
-            let oldDiv = document.getElementById(`${currentAstroPosition}`)
-            // console.log(newAstroPosition, oldDiv, newDiv);
-            newDiv.innerHTML += astronaut
-            oldDiv.innerHTML = ""
-            currentAstroPosition = newAstroPosition
-          }
-  }
+    if(legalMoves[level][currentAstroPosition].right === 0)
+    //CONFIRMING IF LEGAL MOVE HERE
+    {
+      drake.remove()
+      console.log("game over");
+      loseModal()
+    }
+    if(legalMoves[level][currentAstroPosition].right === "win"){
+      console.log("you win");
+      drake.remove()
+      level++
+      winModal()
+    }
+    // if(legalMoves[level][currentAstroPosition].right === "finalwin"){
+    //   console.log("won the whole game");
+    // }
+    else{
+      console.log("legal move");
+      let newAstroPosition = legalMoves[level][currentAstroPosition].right
+      let newDiv = document.getElementById(`${newAstroPosition}`)
+      let oldDiv = document.getElementById(`${currentAstroPosition}`)
+      newDiv.innerHTML += astronaut
+      oldDiv.innerHTML = ""
+      currentAstroPosition = newAstroPosition
+      }
+    }
     //*************** RIGHT MOVEMENT ***************//
-
-})
+  })
 //*************** END OF DRAG DROP LISTENER ***************//
 
+})//*************** END OF DOM EVENT LISTENER ***************//
 
 
 
-})
-//*************** END OF DOM EVENT LISTENER ***************//
+//*************** PURE FUNCTIONS ***************//
 
-// function movePlaySound(){
-//     var audio = new Audio("assets/astromove.wav");
-//     audio.play();
-// }
-// function newGridLoop(array){
-//   for(let element of array){
-//     if(element === 0){
-//       gameBoard.innerHTML += renderFreeHTML(element)
-//     } if(element === 1) {
-//       gameBoard.innerHTML += renderAlienHTML(element)
-//     }
-//      if(element === 2){
-//       gameBoard.innerHTML += renderStartHTML(element)
-//     }
-//     if (element === 3){
-//       gameBoard.innerHTML += renderFinishHTML(element)
-//     }
-//   }
-// }
-
-
+//THIS FUNCTION CALLS HELPER FUNCTIONS IN ORDER TO RENDER THE MAP //
 function foreachLoopTrial(map){
-  for(let array of map){
-    array.map(element => {
+  for(let array of map){ //FOR EVERY ARRAY IN THE MAP ITSELF (MAP IS AN ARRAY OF NESTED ARRAYS IN THE DB)//
+    array.map(element => { //GRAB EACH ELEMENT FROM THE ARRAY//
       if(element === 0){
-        tileId++
-        gameBoard.innerHTML += renderFreeHTML(element)
+        tileId++ //INCREMENT THE DIV ID//
+        gameBoard.innerHTML += renderFreeHTML(element) //ADD THE NEW DIVS HTML TO THE HTML OF THE ENTIRE GAME BOARD
       }
-      if(element === 1) {
+      if(element === 1) { //SAME LOGIC HERE //
         tileId++
         gameBoard.innerHTML += renderAlienHTML(element)
       }
@@ -270,27 +238,29 @@ function foreachLoopTrial(map){
   }
 }
 
-
+//HELPER FUNCTIONS THAT GET CALLED IN THE ABOVE LOOP FUNCTION TO RENDER HTML TO CREATE THE GRID//
 function renderFreeHTML(element){
   return `
   <div id="${tileId}" class="box"></div>
   `
-}
+}//THIS FUNCTION CREATES A FREE SPACE//
 
 function renderAlienHTML(element){
   return `
   <div id="${tileId}" class="box">${alien}</div>
   `
-}
+}//THIS FUNCTION CREATES AN ALIEN SPACE//
 
 function renderStartHTML(element){
   return `
   <div id="${tileId}" class="box">${astronaut}</div>
   `
-}
+}//THIS FUNCTION CREATES OUR ASTRONAUT//
 
 function renderFinishHTML(element){
   return `
   <div id="${tileId}" class="box">${homebase}</div>
   `
-}
+}//THIS FUNCTION CREATES THE SPACESHIP/HOMEBASE//
+
+//*************** PURE FUNCTIONS ***************//
