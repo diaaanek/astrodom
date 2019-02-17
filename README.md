@@ -1,6 +1,7 @@
 # Astrodom Front-end
+In this repository, you will find the frontend for this project built with Javascript. The Rails backend is located:[here](https://github.com/harlangtv/astromdom_backend)
 
-Astrodom is a single page educational game application intended for children to learn the javascript event looping/callstack
+Astrodom is a single page educational game application intended for children to learn the javascript event looping/callstack. 
 
 ## 📌 Features:
 *
@@ -14,18 +15,18 @@ Astrodom is a single page educational game application intended for children to 
 * [Postgress](https://www.sqlite.org/) - Database management
 
 ## 📑 Installation Guide
-To get started, have the backend API running
-` `
-Fork and clone repo:
-` https://github.com/diaaanek/ `
 
-Install all dependencies:
+To get started, have the backend API running:
 
-`   `
+`https://github.com/harlangtv/astromdom_backend`
 
-Create database scheme with migrations:
+Install all dependencies and necessary gems:
 
-` rake db:migrate `
+`bundle install `
+
+This app uses Postgres, Create database scheme with migrations:
+
+` rake db:create`
 
 Seed database:
 
@@ -34,6 +35,12 @@ Seed database:
 Start local server:
 
 ` rails s `
+
+Fork and clone the front end repo:
+
+`https://github.com/diaaanek/astrodom_frontend`
+
+`open index.html`
 
 ## 💻 Supporting Versions
 - Ruby 2.0.0, 2.1.x, 2.2.x, 2.3.x
