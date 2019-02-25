@@ -15,7 +15,7 @@ In this repository, you will find the frontend for this project built with Javas
 ## 🛠 Built With
 * [Javascript](https://www.javascript.com/) - Vanilla JS, JQuery, Animation Libraries
 * [Ruby on Rails](https://rubyonrails.org/) - The web framework used
-* [Postgress](https://www.sqlite.org/) - Database management
+* [Postgres](https://www.sqlite.org/) - Database management
 
 ## 📑 Installation Guide
 
