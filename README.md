@@ -1,16 +1,18 @@
 # Astrodom Front-end
 In this repository, you will find the frontend for this project built with Javascript. The Rails backend is located:[here](https://github.com/harlangtv/astromdom_backend)
 
-Astrodom is a single page educational game application intended for children to learn the javascript event looping/callstack. 
+![Alt text](astrodom_frontend/assets/Screen Shot 2019-02-24 at 11.41.42 PM.png"Demo")
 
 ## 📌 Features:
-*
+* Astrodom is a single page educational game application intended for (children) to learn the Javascript event loop/callstack. 
 
 ## 🎯 Stretch Goals
-*
+* Implement beyond level 3, complex maps
+* Sprite animation
+* Time constraints
 
 ## 🛠 Built With
-* [Javascript](https://www.javascript.com/)
+* [Javascript](https://www.javascript.com/) - Vanilla JS, JQuery, Animation Libraries
 * [Ruby on Rails](https://rubyonrails.org/) - The web framework used
 * [Postgress](https://www.sqlite.org/) - Database management
 
