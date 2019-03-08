@@ -96,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("you win");
       level++ //INCREMENT THE LEVEL SO WIN MODAL CAN RENDER A NEW MAP
       winModal()
+      console.log(currentAstroPosition);
     }
     // if(legalMoves[level][currentAstroPosition].up === "finalwin"){
     //   console.log("won the whole game");
@@ -110,6 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
       newDiv.innerHTML += astronaut // ADD THE ASTRONAUT TO THE NEW DIV
       oldDiv.innerHTML = "" // REMOVE THE ASTRONAUT FROM THE OLD DIV
       currentAstroPosition = newAstroPosition //UPDATE THE LOCAL VARIABLE
+      console.log(currentAstroPosition);
+
     }
   }
   //*************** UP MOVEMENT ***************//
@@ -127,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
           drake.remove()
           level++
           winModal()
-
+          console.log(currentAstroPosition);
         }
         // if(legalMoves[level][currentAstroPosition].down === "finalwin"){
         //   console.log("won the whole game");
@@ -141,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
           newDiv.innerHTML += astronaut
           oldDiv.innerHTML = ""
           currentAstroPosition = newAstroPosition
+          console.log(currentAstroPosition);
         }
   }
   //*************** DOWN MOVEMENT ***************//
@@ -160,6 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
       drake.remove()
       level++
       winModal()
+      console.log(currentAstroPosition);
     }
     // if(legalMoves[level][currentAstroPosition].left === "finalwin"){
     //   console.log("won the whole game");
@@ -172,6 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
       newDiv.innerHTML += astronaut
       oldDiv.innerHTML = ""
       currentAstroPosition = newAstroPosition
+      console.log(currentAstroPosition);
     }
   }
   //*************** LEFT MOVEMENT ***************//
@@ -190,6 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
       drake.remove()
       level++
       winModal()
+      console.log(currentAstroPosition);
     }
     // if(legalMoves[level][currentAstroPosition].right === "finalwin"){
     //   console.log("won the whole game");
@@ -202,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
       newDiv.innerHTML += astronaut
       oldDiv.innerHTML = ""
       currentAstroPosition = newAstroPosition
+      console.log(currentAstroPosition);
       }
     }
     //*************** RIGHT MOVEMENT ***************//

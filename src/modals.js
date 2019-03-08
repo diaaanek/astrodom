@@ -27,7 +27,7 @@ function winModal(){//THIS MODAL IS CALLED WHEN THE ASTRONAUT MOVES INTO THE SPA
 
   return winModal.addEventListener('click', e =>{//IF THEY CLICK THE WIN BTN//
       console.log('click');
-      console.log(level);
+      console.log('level', level);
       newMap = mapGrid[level].layout//DEFINE THE NEW MAP VARIABLE TO THE INCREMENTED LEVEL//
       tileId = 0 //RESET THE TILE ID SO THAT THE DIVS ARE CREATED STARTING WITH ID#1//
       console.log(newMap);
@@ -36,17 +36,19 @@ function winModal(){//THIS MODAL IS CALLED WHEN THE ASTRONAUT MOVES INTO THE SPA
       console.log("reseting map HTML here");
       foreachLoopTrial(newMap) //RENDER THE NEW MAP PER THE LOOP FUNCTION//
       console.log('map rendered');
+      currentAstroPosition = parseInt(document.getElementById("astronaut").parentElement.id)
       movesRemaining.innerHTML = `<h2 class="title">MOVES PLAYED</h2>`//RESET THE MOVES PLAYED CONTAINER TO EMPTY//
       console.log('about to close modal');
       winModal.style.display = "none" //CLOSE THE WIN MODAL//
       console.log('closed the modal');
+      console.log('astro', currentAstroPosition);
       return
 
-  })//CRAZY EFFING BUG HAPPENS WHEN YOU PROGRESS FROM MAP 2 TO MAP 3. IT REGISTERS TWO CLICKS ONLY WHEN YOU PROGRESS FROM AN EARLIER MAP...AND CREATES A CLONE ASTRONAUT IN A WEIRD SPOT THAT DOESN'T RENDER UNTIL YOU MOVE HIM IN A LEGAL MOVE FROM (MAYBE???) DIV 7 WHEN YOU START IN MAP 3, IT WORKS TOTALLY FINE. MAYBE WE CAN REMOVE THE EVENT LISTENER??? NO IDEA. HAHAHAHA WTF//
+  })//CRAZY EFFING BUG RESOLVED HURRAY HURRAY HURRAY //
 
 }//end of win modal
 
-function loseModal(){//THIS IS THE FUNCTION WHEN 
+function loseModal(){//THIS IS THE FUNCTION WHEN
   const movesRemaining = document.querySelector("#b2")
   const loseModal = document.getElementById("lose-modal")
   const loseBtn = document.getElementById('try-again-btn')
@@ -67,3 +69,33 @@ function loseModal(){//THIS IS THE FUNCTION WHEN
     console.log('closed the modal');
   }) // end of click listener
 }//end of lose modal
+
+function finalWinModal(){
+  const movesRemaining = document.querySelector("#b2") //GRAB THE DIV THAT HOLDS THE PLAYED MOVES//
+  const finalWinModal = document.getElementById("final-win-modal")//GRAB THE WIN MODAL//
+  const winBtn = finalWinModal.querySelector("#finalwin-btn")
+
+  finalWinModal.style.display = "block"
+
+  return finalWinModal.addEventListener('click', e =>{//IF THEY CLICK THE BTN//
+      console.log('click');
+      console.log('level', level);
+      newMap = mapGrid[0].layout//DEFINE THE NEW MAP VARIABLE TO THE INCREMENTED LEVEL//
+      tileId = 0 //RESET THE TILE ID SO THAT THE DIVS ARE CREATED STARTING WITH ID#1//
+      console.log('map1', newMap);
+      // console.log(tileId);
+      gameBoard.innerHTML = ""//RESET THE INNER HTML OF THE GRID TO EMPTY//
+      console.log("reseting map HTML here");
+      foreachLoopTrial(newMap) //RENDER THE NEW MAP PER THE LOOP FUNCTION//
+      console.log('map rendered');
+      currentAstroPosition = parseInt(document.getElementById("astronaut").parentElement.id)
+      movesRemaining.innerHTML = `<h2 class="title">MOVES PLAYED</h2>`//RESET THE MOVES PLAYED CONTAINER TO EMPTY//
+      console.log('about to close modal');
+      finalWinModal.style.display = "none" //CLOSE THE WIN MODAL//
+      console.log('closed the modal');
+      console.log('astro', currentAstroPosition);
+      return
+
+  })
+
+}
