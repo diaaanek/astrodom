@@ -1,5 +1,5 @@
 # Astrodom Front-end
-In this repository, you will find the frontend for this project built with Javascript. The Rails backend is located:[here](https://github.com/harlangtv/astromdom_backend)
+In this repository, you will find the frontend for this project built with Javascript. The Rails backend is located: [here](https://github.com/harlangtv/astromdom_backend)
 
 ![Astrodom-Demo](https://github.com/diaaanek/astrodom_frontend/blob/master/assets/astro.png?raw=true)
 
