@@ -13,7 +13,7 @@ In this repository, you will find the frontend for this project built with Javas
 * Time constraints
 
 ## 🛠 Built With
-* [Javascript](https://www.javascript.com/) - Vanilla JS, JQuery, Animation Libraries
+* [Javascript](https://www.javascript.com/) - Vanilla JS, Animation Libraries
 * [Ruby on Rails](https://rubyonrails.org/) - The web framework used
 * [Postgres](https://www.sqlite.org/) - Database management
 
