@@ -60,7 +60,3 @@ Bug reports and pull requests are welcome on GitHub at [astrodom repo](https://g
 * **Diane Korongy** - [Diane Korongy](https://github.com/diaaanek)
 * **Gabbie Piraino** - [Gabbie Piraino](https://github.com/pirainogi )
 * **Harlan Taub** - [Harlan Taub](https://github.com/harlangtv )
-
-## 📗 License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
