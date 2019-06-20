@@ -40,7 +40,7 @@ const legalMoves = {
     10: {up: 0, down: 0, left: 9, right: 0},
     12: {up: 8, down: 16, left: 0, right: 0},
     13: {up: 9, down: 0, left: 0, right: 0},
-    16: {up: 12, down: 0, left: "win", right: 0}
+    16: {up: 12, down: 0, left: "finalwin", right: 0}
   }//end of map6
 }
 // console.log(map4LegalMoves[1]);
