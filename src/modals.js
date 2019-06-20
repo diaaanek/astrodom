@@ -18,7 +18,7 @@ function introModal(){//THIS MODAL IS CALLED ON EVERY REFRESH OF THE GAME//
 
 }// END OF INTRO MODAL FUNCTION//
 
-function winModal(){//THIS MODAL IS CALLED WHEN THE ASTRONAUT MOVES INTO THE SPACESHIP DIV (PER INDEX.JS) THE LEVEL IS INCREMENTED ***BEFORE*** THE WINMODAL FUNCTION IS CALLED//
+function levelUpModal(){//THIS MODAL IS CALLED WHEN THE ASTRONAUT MOVES INTO THE SPACESHIP DIV (PER INDEX.JS) THE LEVEL IS INCREMENTED ***BEFORE*** THE WINMODAL FUNCTION IS CALLED//
   const movesRemaining = document.querySelector("#b2") //GRAB THE DIV THAT HOLDS THE PLAYED MOVES//
   const winModal = document.getElementById("win-modal")//GRAB THE WIN MODAL//
   const winBtn = winModal.querySelector("#win-btn")//GRAB THE WIN MODAL BTN//
@@ -26,22 +26,22 @@ function winModal(){//THIS MODAL IS CALLED WHEN THE ASTRONAUT MOVES INTO THE SPA
   winModal.style.display = "block"//UPON CALLING THIS FUNCTION, CHANGE THE WIN MODAL'S DISPLAY TO BLOCK//
 
   return winModal.addEventListener('click', e =>{//IF THEY CLICK THE WIN BTN//
-      console.log('click');
-      console.log('level', level);
+      // console.log('click');
+      // console.log('level', level);
       newMap = mapGrid[level].layout//DEFINE THE NEW MAP VARIABLE TO THE INCREMENTED LEVEL//
       tileId = 0 //RESET THE TILE ID SO THAT THE DIVS ARE CREATED STARTING WITH ID#1//
-      console.log(newMap);
+      // console.log(newMap);
       // console.log(tileId);
       gameBoard.innerHTML = ""//RESET THE INNER HTML OF THE GRID TO EMPTY//
-      console.log("reseting map HTML here");
+      // console.log("reseting map HTML here");
       foreachLoopTrial(newMap) //RENDER THE NEW MAP PER THE LOOP FUNCTION//
-      console.log('map rendered');
+      // console.log('map rendered');
       currentAstroPosition = parseInt(document.getElementById("astronaut").parentElement.id)
       movesRemaining.innerHTML = `<h2 class="title">MOVES PLAYED</h2>`//RESET THE MOVES PLAYED CONTAINER TO EMPTY//
-      console.log('about to close modal');
+      // console.log('about to close modal');
       winModal.style.display = "none" //CLOSE THE WIN MODAL//
-      console.log('closed the modal');
-      console.log('astro', currentAstroPosition);
+      // console.log('closed the modal');
+      // console.log('astro', currentAstroPosition);
       return
 
   })//CRAZY EFFING BUG RESOLVED HURRAY HURRAY HURRAY //
@@ -55,18 +55,18 @@ function loseModal(){//THIS IS THE FUNCTION WHEN
 
   loseModal.style.display = "block"
   loseModal.addEventListener('click', e =>{
-    console.log('click');
-    console.log(level);
+    // console.log('click');
+    // console.log(level);
     retryMap = mapGrid[level].layout
     tileId = 0
     gameBoard.innerHTML = ""
-    console.log("reseting map HTML here");
+    // console.log("reseting map HTML here");
     foreachLoopTrial(retryMap)
-    console.log('map rendered');
+    // console.log('map rendered');
     movesRemaining.innerHTML = `<h2 class="title">MOVES REMAINING</h2>`
-    console.log('about to close modal');
+    // console.log('about to close modal');
     loseModal.style.display = "none"
-    console.log('closed the modal');
+    // console.log('closed the modal');
   }) // end of click listener
 }//end of lose modal
 
